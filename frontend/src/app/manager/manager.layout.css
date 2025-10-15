@@ -1,0 +1,25 @@
+.manager-layout {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f9f9f9;
+}
+
+.manager-main-content {
+    flex: 1;
+    margin-left: 250px;
+    transition: all 0.3s;
+}
+
+.manager-content {
+    padding: 30px;
+}
+
+@media (max-width: 768px) {
+    .manager-main-content {
+        margin-left: 70px;
+    }
+
+    .manager-content {
+        padding: 15px;
+    }
+}

@@ -9,7 +9,7 @@ export const ROUTES = {
     profile: () => '/profile',
 
     // manager pages
-    dashboard: () => '/dashboard',
+    managerDashboard: () => '/manager/dashboard',
 
     // master pages
     main: () => '/main'
