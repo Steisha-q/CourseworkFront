@@ -1,0 +1,18 @@
+.auth-sidebar {
+  flex: 1;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.auth-sidebar-img {
+  width: 80%;
+  max-width: 500px;
+  height: auto;
+}
+ 
+.auth-sidebar:has(img[src=""]) {
+  background: linear-gradient(135deg, #87A878 0%, #8D8D8D 100%);
+}
