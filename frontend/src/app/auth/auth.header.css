@@ -1,0 +1,26 @@
+.auth-header {
+  margin-bottom: 2rem;
+}
+
+.auth-logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.auth-logo-placeholder {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.auth-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2e7d32;
+  margin: 0;
+}
