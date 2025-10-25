@@ -1,15 +1,41 @@
 .manager-header {
+    height: 80px;
+    background-color: #C7CCB9;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 30px;
-    background-color: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 0 24px;
+    border-bottom: 1px solid #b0b49f;
+    box-shadow: 0 2px 8px rgba(46, 125, 50, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
-.manager-header h1 {
-    font-weight: 600;
-    color: #333;
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    /* Відстань між двома зображеннями */
+}
+
+.header-left .logo-img {
+    height: 40px;
+    /* основний логотип */
+    width: auto;
+    object-fit: contain;
+}
+
+.header-left .secondary-img {
+    height: 27px;
+    /* трохи менше другого фото */
+    width: auto;
+    object-fit: contain;
+}
+
+/* Аккаунт менеджера */
+.header-right {
+    position: relative;
 }
 
 .user-profile {
@@ -17,24 +43,61 @@
     align-items: center;
     gap: 10px;
     cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 8px 12px;
+    border-radius: 24px;
+    transition: 0.3s ease;
+}
+
+.user-profile:hover {
+    background-color: rgba(255, 255, 255, 0.25);
 }
 
 .user-profile img {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .user-profile span {
+    font-size: 15px;
+    color: #2e7d32;
     font-weight: 500;
 }
 
-@media (max-width: 768px) {
-    .manager-header {
-        padding: 15px 20px;
-    }
+.user-profile i {
+    color: #2e7d32;
+    font-size: 14px;
+}
 
-    .user-profile span {
-        display: none;
-    }
+/* Dropdown */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    margin-top: 8px;
+    padding: 8px;
+    min-width: 120px;
+    z-index: 20;
+}
+
+.logout-btn {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 8px 12px;
+    text-align: left;
+    cursor: pointer;
+    color: #2e7d32;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.logout-btn:hover {
+    background-color: #f1f8f4;
 }

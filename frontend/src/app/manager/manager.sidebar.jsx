@@ -2,18 +2,24 @@ import React from "react";
 import "./manager.sidebar.css";
 
 const menuItems = [
-  { icon: "fas fa-chart-pie", label: "Overview", active: true },
+  { type: "section", label: "Overview" },
   { icon: "fas fa-tachometer-alt", label: "Dashboard" },
+
   { type: "section", label: "Post CRUD" },
   { icon: "fas fa-file-alt", label: "Posts" },
+
   { type: "section", label: "Category CRUD" },
   { icon: "fas fa-tags", label: "Categories" },
+
   { type: "section", label: "Things CRUD" },
   { icon: "fas fa-box", label: "Things" },
+
   { type: "section", label: "User Management" },
   { icon: "fas fa-users", label: "Users" },
-  { icon: "fas fa-shipping-fast", label: "Delivery Status" },
+
+  { type: "section", label: "Delivery Status" },
   { icon: "fas fa-sync-alt", label: "Update Status" },
+
   { type: "section", label: "Raffles" },
   { icon: "fas fa-gift", label: "Raffles" },
 ];
@@ -21,9 +27,6 @@ const menuItems = [
 const ManagerSidebar = () => {
   return (
     <div className="manager-sidebar">
-      <div className="sidebar-logo">
-        <h2>EcoCraft</h2>
-      </div>
       <nav className="sidebar-nav">
         <ul className="nav-links">
           {menuItems.map((item, index) => (
@@ -33,7 +36,7 @@ const ManagerSidebar = () => {
                   <span>{item.label}</span>
                 </li>
               ) : (
-                <li className={item.active ? "active" : ""}>
+                <li>
                   <a href="#">
                     <i className={item.icon}></i>
                     <span>{item.label}</span>

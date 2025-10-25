@@ -1,0 +1,125 @@
+.categories-page {
+    display: flex;
+    gap: 24px;
+    padding: 24px;
+    background-color: #f9fff9;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/* Форма */
+.category-form {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.category-form h2 {
+    margin-bottom: 16px;
+    color: #2e7d32;
+}
+
+.category-form label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+    font-weight: 500;
+    color: #333;
+}
+
+.category-form input,
+.category-form textarea,
+.category-form select {
+    margin-top: 6px;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.category-form button {
+    align-self: flex-start;
+    background-color: #2e7d32;
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.category-form button:hover {
+    background-color: #27642a;
+}
+
+/* Таблиця */
+.category-list {
+    flex: 2;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.category-list h2 {
+    margin-bottom: 16px;
+    color: #2e7d32;
+}
+
+.category-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.category-table thead {
+    background-color: #8bc48a;
+    color: white;
+    text-align: left;
+}
+
+.category-table th,
+.category-table td {
+    padding: 12px 16px;
+    vertical-align: top;
+}
+
+.category-table tbody tr:nth-child(even) {
+    background-color: #f2fff2;
+}
+
+.category-table td p {
+    margin: 4px 0 0 0;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Статус */
+.status-active {
+    color: #2e7d32;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.status-inactive {
+    color: #a33;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Іконки */
+.icon-btn {
+    background: none;
+    border: none;
+    color: #2e7d32;
+    font-size: 18px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.icon-btn:hover {
+    color: #1b5e20;
+}

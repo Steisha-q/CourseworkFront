@@ -7,6 +7,7 @@ import {
   SignInPage,
   SignUpPage,
   MasterDashboardPage,
+  CategoriesPage,
   MainPage,
 } from "./pages";
 import "./App.css";
@@ -32,6 +33,7 @@ function App() {
               path={ROUTES.managerDashboard()}
               element={<MasterDashboardPage />}
             />
+            <Route path={ROUTES.categories()} element={<CategoriesPage />} />
           </Route>
 
           <Route element={<Layouts.MasterLayout />}>

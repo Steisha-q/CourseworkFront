@@ -11,6 +11,8 @@ export const ROUTES = {
     // manager pages
     managerDashboard: () => '/manager/dashboard',
 
+    categories: () => "/manager/categories",
+
     // master pages
     main: () => '/main'
 }
