@@ -8,6 +8,7 @@ import {
   SignUpPage,
   MasterDashboardPage,
   CategoriesPage,
+  UsersPage,
   MainPage,
 } from "./pages";
 import "./App.css";
@@ -34,6 +35,8 @@ function App() {
               element={<MasterDashboardPage />}
             />
             <Route path={ROUTES.categories()} element={<CategoriesPage />} />
+
+            <Route path={ROUTES.users()} element={<UsersPage />} />
           </Route>
 
           <Route element={<Layouts.MasterLayout />}>
