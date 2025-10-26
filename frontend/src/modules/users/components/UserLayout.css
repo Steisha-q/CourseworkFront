@@ -1,0 +1,13 @@
+.user-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.main-content-wrapper {
+  flex: 1;
+  margin-left: 280px;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
