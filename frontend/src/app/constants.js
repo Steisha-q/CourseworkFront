@@ -13,6 +13,8 @@ export const ROUTES = {
 
     categories: () => "/manager/categories",
 
+    users: () => "/manager/users",
+
     // master pages
     main: () => '/main'
 }
