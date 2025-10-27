@@ -1,18 +1,15 @@
-import { Outlet, NavLink } from "react-router";
-import { ROUTES } from "../constants";
+import { Outlet } from 'react-router';
+import { Sidebar } from './Sidebar';
+import './UserLayout.css';
 
 export const UserLayout = () => {
+  console.log('HERE');
   return (
-    <div>
-      <nav>
-        <NavLink to={ROUTES.home()} end>
-          Home
-        </NavLink>
-        <NavLink to={ROUTES.profile()} end>
-          Profile
-        </NavLink>
-      </nav>
-      <Outlet />
+    <div className="user-layout">
+      <Sidebar />
+      <div className="main-content-wrapper">
+        <Outlet />
+      </div>
     </div>
   );
 };

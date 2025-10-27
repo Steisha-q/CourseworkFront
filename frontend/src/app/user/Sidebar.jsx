@@ -1,6 +1,8 @@
 import './Sidebar.css';
 
 export const Sidebar = () => {
+  console.log('HERE');
+  
   return (
     <div className="sidebar">
       <div className="sidebar-header">
