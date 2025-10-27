@@ -16,5 +16,6 @@ export const ROUTES = {
     users: () => "/manager/users",
 
     // master pages
-    main: () => '/main'
+    main: () => '/main',
+    mprofile: () => '/master/Mprofile'
 }
