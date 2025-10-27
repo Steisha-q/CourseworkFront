@@ -7,7 +7,7 @@ export const ProfilePage = () => {
         <div className="profile-main">
           <div className="profile-info">
             <div className="profile-top">
-              <h2 className="nickname">Nichname</h2>
+              <h2 className="nickname">Nickname</h2>
               <div className="stats">
                 <div className="stat">
                   <span className="stat-number">8</span>
