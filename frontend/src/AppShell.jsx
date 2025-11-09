@@ -13,6 +13,7 @@ import {
   FeedbackPage,
   CreateCommunityPage,
   ShoppingPage,
+  ProfilePage,
 } from "./pages";
 import "./App.css";
 
@@ -47,6 +48,7 @@ function App() {
 
           <Route element={<Layouts.MasterLayout />}>
             <Route path={ROUTES.main()} element={<MainPage />} />
+            <Route path={ROUTES.mprofile()} element={<MProfilePage />} />
           </Route>
         </Routes>
       </BrowserRouter>

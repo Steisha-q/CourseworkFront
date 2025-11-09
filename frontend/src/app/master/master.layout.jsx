@@ -1,10 +1,16 @@
-import { Outlet } from "react-router"
+import { Outlet } from "react-router";
+import MasterSidebar from "./master.sidebar";
+import "./master.layout.css";
 
 export const MasterLayout = () => {
   return (
-    <div>
-        <div>Master Menu:</div>
-        <Outlet />
+    <div className="master-layout">
+      <div className="master-body">
+        <MasterSidebar />
+        <main className="master-content">
+          <Outlet />
+        </main>
+      </div>
     </div>
-  )
-}
+  );
+};
