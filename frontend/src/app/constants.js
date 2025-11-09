@@ -19,5 +19,6 @@ export const ROUTES = {
     main: () => '/main',
 
     //feedback page
-    feedback: () => '/feedback'
+    feedback: () => '/feedback',
+    mprofile: () => '/master/Mprofile'
 }
