@@ -17,7 +17,13 @@ export const ROUTES = {
 
     // master pages
     main: () => '/main',
-
+  
+    // feedback page
+    feedback: () => '/feedback',
+    //for communities
+    createcommunity: () => '/createcommunity',
+    // shopping list page
+    shopping: () => '/shopping',
     //feedback page
     feedback: () => '/feedback',
     mprofile: () => '/master/Mprofile'

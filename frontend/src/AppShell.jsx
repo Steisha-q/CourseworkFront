@@ -11,7 +11,9 @@ import {
   UsersPage,
   MainPage,
   FeedbackPage,
-  MProfilePage,
+  CreateCommunityPage,
+  ShoppingPage,
+  ProfilePage,
 } from "./pages";
 import "./App.css";
 
@@ -22,9 +24,11 @@ function App() {
         <Routes>
           <Route path={ROUTES.home()} element={<HomePage />} />
           <Route path={ROUTES.feedback()} element={<FeedbackPage />} />
+          <Route path={ROUTES.createcommunity()} element={<CreateCommunityPage />} />
 
           <Route element={<Layouts.UserLayout />}>
             <Route path={ROUTES.profile()} element={<ProfilePage />} />
+            <Route path={ROUTES.shopping()} element={<ShoppingPage />} />
           </Route>
 
           <Route element={<Layouts.AuthLayout />}>
