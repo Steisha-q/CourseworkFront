@@ -16,5 +16,8 @@ export const ROUTES = {
     users: () => "/manager/users",
 
     // master pages
-    main: () => '/main'
+    main: () => '/main',
+
+    //feedback page
+    feedback: () => '/feedback'
 }

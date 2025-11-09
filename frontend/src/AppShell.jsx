@@ -10,6 +10,7 @@ import {
   CategoriesPage,
   UsersPage,
   MainPage,
+  FeedbackPage,
 } from "./pages";
 import "./App.css";
 
@@ -19,6 +20,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path={ROUTES.home()} element={<HomePage />} />
+          <Route path={ROUTES.feedback()} element={<FeedbackPage />} />
 
           <Route element={<Layouts.UserLayout />}>
             <Route path={ROUTES.profile()} element={<ProfilePage />} />
