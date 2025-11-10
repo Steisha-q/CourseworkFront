@@ -13,7 +13,7 @@ import {
   FeedbackPage,
   CreateCommunityPage,
   ShoppingPage,
-  ProfilePage,
+  MProfilePage,
 } from "./pages";
 import "./App.css";
 
