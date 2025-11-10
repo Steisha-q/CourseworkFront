@@ -1,0 +1,317 @@
+.rafflesPage {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px;
+    background: #f5f7fb;
+    font-family: 'Inter', sans-serif;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.searchBox {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 8px;
+    padding: 6px 12px;
+    flex: 1 1 250px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.searchBox input {
+    border: none;
+    outline: none;
+    margin-left: 8px;
+    flex: 1;
+    font-size: 14px;
+    background: transparent;
+}
+
+.statusFilter {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    background: #fff;
+}
+
+.addBtn {
+    background: #3b82f6;
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.addBtn:hover {
+    background: #2563eb;
+}
+
+.rafflesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.raffleCard {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.raffleCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.status {
+    padding: 4px 10px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.активний {
+    background: #16a34a;
+    color: white;
+}
+
+.очікує {
+    background: #facc15;
+    color: #1f2937;
+}
+
+.завершено {
+    background: #dc2626;
+    color: white;
+}
+
+.desc {
+    font-size: 14px;
+    color: #4b5563;
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
+.detail {
+    margin: 3px 0;
+    font-size: 14px;
+    color: #374151;
+}
+
+.cardActions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.editBtn,
+.deleteBtn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.editBtn {
+    background: #eff6ff;
+    color: #3b82f6;
+}
+
+.editBtn:hover {
+    background: #dbeafe;
+}
+
+.deleteBtn {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.deleteBtn:hover {
+    background: #fecaca;
+}
+
+.empty {
+    text-align: center;
+    color: #6b7280;
+    font-size: 16px;
+    font-style: italic;
+    margin-top: 40px;
+}
+
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(31, 41, 55, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modalContent {
+    background: #fff;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 600px;
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modalContent h2 {
+    font-size: 20px;
+    margin-bottom: 16px;
+    color: #1f2937;
+}
+
+.modalActions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.submitBtn {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.submitBtn:hover {
+    background: #2563eb;
+}
+
+.cancelBtn {
+    background: #e5e7eb;
+    color: #374151;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.cancelBtn:hover {
+    background: #d1d5db;
+}
+
+.formGroup {
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.formGroup label {
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #374151;
+}
+
+.formGroup input,
+.formGroup select,
+.formGroup textarea {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+    outline: none;
+}
+
+.formGroup input:focus,
+.formGroup select:focus,
+.formGroup textarea:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.formRow {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.error {
+    background: #fee2e2;
+    color: #b91c1c;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.detailsBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    background-color: #0077ff;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.2s;
+    font-size: 0.95rem;
+}
+
+.detailsBtn:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.detailsBtn:active {
+    background-color: #004494;
+    transform: translateY(0);
+}
