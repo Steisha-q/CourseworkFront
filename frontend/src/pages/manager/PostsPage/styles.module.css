@@ -1,0 +1,81 @@
+.postsPage {
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f7f8fa;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.postsList {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.postCard {
+    display: flex;
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.postCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.postImage {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.postContent {
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.postContent h2 {
+    margin: 0 0 10px 0;
+    color: #007bff;
+}
+
+.postContent p {
+    margin: 4px 0;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.detailsBtn {
+    align-self: flex-start;
+    margin-top: 10px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background-color: #28a745;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.detailsBtn:hover {
+    background-color: #218838;
+}
+
+.published {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.draft {
+    color: #ffc107;
+    font-weight: bold;
+}

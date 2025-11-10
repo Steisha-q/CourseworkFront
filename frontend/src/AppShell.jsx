@@ -18,6 +18,7 @@ import {
   RaffleDetailPage,
 } from "./pages";
 import "./App.css";
+import { PostsPage } from "./pages/manager/PostsPage";
 
 function App() {
   return (
@@ -51,6 +52,9 @@ function App() {
             <Route path={ROUTES.users()} element={<UsersPage />} />
 
             <Route path={ROUTES.raffles()} element={<RafflesPage />} />
+
+            <Route path={ROUTES.post()} element={<PostsPage />} />
+
             <Route path="/manager/raffles/:id" element={<RaffleDetailPage />} />
           </Route>
 
