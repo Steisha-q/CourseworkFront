@@ -24,5 +24,12 @@ export const ROUTES = {
     createcommunity: () => '/createcommunity',
     // shopping list page
     shopping: () => '/shopping',
-    mprofile: () => '/master/Mprofile'
+    
+    mprofile: () => '/master/Mprofile',
+
+    raffles: () => '/manager/raffles',
+    
+    raffledetail: () => '/manager/raffles/detail',
+    
+    post:()=>'/manager/post'
 }

@@ -14,8 +14,11 @@ import {
   CreateCommunityPage,
   ShoppingPage,
   MProfilePage,
+  RafflesPage,
+  RaffleDetailPage,
 } from "./pages";
 import "./App.css";
+import { PostsPage } from "./pages/manager/PostsPage";
 
 function App() {
   return (
@@ -24,7 +27,10 @@ function App() {
         <Routes>
           <Route path={ROUTES.home()} element={<HomePage />} />
           <Route path={ROUTES.feedback()} element={<FeedbackPage />} />
-          <Route path={ROUTES.createcommunity()} element={<CreateCommunityPage />} />
+          <Route
+            path={ROUTES.createcommunity()}
+            element={<CreateCommunityPage />}
+          />
 
           <Route element={<Layouts.UserLayout />}>
             <Route path={ROUTES.profile()} element={<ProfilePage />} />
@@ -44,6 +50,12 @@ function App() {
             <Route path={ROUTES.categories()} element={<CategoriesPage />} />
 
             <Route path={ROUTES.users()} element={<UsersPage />} />
+
+            <Route path={ROUTES.raffles()} element={<RafflesPage />} />
+
+            <Route path={ROUTES.post()} element={<PostsPage />} />
+
+            <Route path="/manager/raffles/:id" element={<RaffleDetailPage />} />
           </Route>
 
           <Route element={<Layouts.MasterLayout />}>

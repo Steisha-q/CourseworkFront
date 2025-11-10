@@ -1,0 +1,129 @@
+.detailPage {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.backLink {
+    text-decoration: none;
+    color: #0077ff;
+    margin-bottom: 20px;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.raffleCard {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    background: #ffffff;
+}
+
+.statusBar {
+    padding: 8px 15px;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.активний {
+    background-color: #28a745;
+}
+
+.очікує {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.завершено {
+    background-color: #6c757d;
+}
+
+.raffleContent {
+    padding: 20px;
+}
+
+.raffleTitle {
+    margin: 0 0 10px 0;
+}
+
+.description {
+    margin-bottom: 20px;
+    font-size: 1.05em;
+}
+
+.infoGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+}
+
+.infoItem {
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.participantGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.participantCard {
+    display: flex;
+    align-items: center;
+    background: #f1f3f5;
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.participantCard.winner {
+    border: 2px solid #28a745;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    background: #0077ff;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.participantInfo {
+    flex: 1;
+}
+
+.participantName {
+    font-weight: bold;
+    margin: 0;
+}
+
+.participantEmail {
+    font-size: 0.9em;
+    color: #555;
+    margin: 0;
+}
+
+.trophy {
+    font-size: 1.3em;
+    margin-left: 5px;
+}
+
+.winners ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 10px;
+}
