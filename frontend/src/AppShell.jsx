@@ -22,6 +22,7 @@ import {
   EditProfilePage,
   CreatePage,
   MasterPostPage,
+  CommunityPage,
 } from "./pages";
 import "./App.css";
 import { PostsPage } from "./pages/manager/PostsPage";
@@ -72,9 +73,14 @@ function App() {
 
           <Route element={<Layouts.MasterLayout />}>
             <Route path={ROUTES.main()} element={<MainPage />} />
+
             <Route path={ROUTES.mprofile()} element={<MProfilePage />} />
+
             <Route path={ROUTES.create()} element={<CreatePage />} />
+
             <Route path={ROUTES.masterpost()} element={<MasterPostPage />} />
+
+            <Route path={ROUTES.community()} element={<CommunityPage />} />
           </Route>
         </Routes>
       </BrowserRouter>

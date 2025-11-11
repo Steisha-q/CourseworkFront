@@ -45,5 +45,7 @@ export const ROUTES = {
 
     create: () => '/master/create',
     
-    masterpost:()=>'/master/post'
+    masterpost: () => '/master/post',
+    
+    community:()=>'/master/community'
 }
