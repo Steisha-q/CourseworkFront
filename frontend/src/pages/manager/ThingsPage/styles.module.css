@@ -1,0 +1,274 @@
+.productsPage {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f0f9f0 0%, #e4f3e4 100%);
+    min-height: 100vh;
+}
+
+.pageHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.pageHeader h1 {
+    color: #2d5a2d;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin: 0;
+}
+
+.addButton {
+    padding: 12px 25px;
+    background: linear-gradient(135deg, #2d5a2d 0%, #3d7b3d 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.addButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(45, 90, 45, 0.3);
+}
+
+.productsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.productCard {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(34, 139, 34, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid #e8f5e8;
+}
+
+.productCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(34, 139, 34, 0.15);
+}
+
+.imageContainer {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.productImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.productCard:hover .productImage {
+    transform: scale(1.05);
+}
+
+.statusBadge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.statusBadge.available {
+    background: linear-gradient(135deg, #48bb78, #38a169);
+    color: white;
+}
+
+.statusBadge.out_of_stock {
+    background: linear-gradient(135deg, #a05050, #904040);
+    color: white;
+}
+
+.productInfo {
+    padding: 20px;
+}
+
+.productName {
+    color: #2d5a2d;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+}
+
+.productDescription {
+    color: #4a7c4a;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0 0 15px 0;
+}
+
+.productPrice {
+    color: #2d5a2d;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.productActions {
+    padding: 0 20px 20px 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.editButton {
+    flex: 1;
+    padding: 10px 15px;
+    background: linear-gradient(135deg, #48bb78, #38a169);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.editButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(72, 187, 120, 0.3);
+}
+
+.deleteButton {
+    flex: 1;
+    padding: 10px 15px;
+    background: linear-gradient(135deg, #a05050, #904040);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.deleteButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(160, 80, 80, 0.3);
+}
+
+.editForm {
+    padding: 20px;
+}
+
+.formGroup {
+    margin-bottom: 15px;
+}
+
+.formGroup label {
+    display: block;
+    color: #2d5a2d;
+    font-weight: 600;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+.input,
+.textarea,
+.select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid #e8f5e8;
+    border-radius: 6px;
+    background: white;
+    color: #2d5a2d;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus {
+    outline: none;
+    border-color: #48bb78;
+    box-shadow: 0 0 0 3px rgba(72, 187, 120, 0.1);
+}
+
+.textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.formActions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.saveButton {
+    flex: 1;
+    padding: 12px;
+    background: linear-gradient(135deg, #2d5a2d, #3d7b3d);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.saveButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(45, 90, 45, 0.3);
+}
+
+.cancelButton {
+    flex: 1;
+    padding: 12px;
+    background: linear-gradient(135deg, #a05050, #904040);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cancelButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(160, 80, 80, 0.3);
+}
+
+@media (max-width: 768px) {
+    .productsPage {
+        padding: 20px 15px;
+    }
+
+    .pageHeader {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .pageHeader h1 {
+        font-size: 2rem;
+    }
+
+    .productsGrid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .productActions {
+        flex-direction: column;
+    }
+}
