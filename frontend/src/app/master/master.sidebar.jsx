@@ -16,11 +16,9 @@ import {
 const menuItems = [
   { icon: FaHome, label: "Home", link: "#home" },
   { icon: FaSearch, label: "Search", link: "#search" },
-  { icon: FaEnvelope, label: "Message", link: "#message" },
   { icon: FaPlusCircle, label: "Create", link: "#create" },
   { icon: FaUser, label: "Profile", link: "#profile", active: true },
-  { icon: FaCommentDots, label: "Feedback", link: "#feedback" },
-  { icon: FaFire, label: "Tastes", link: "#tastes" },
+  { icon: FaFire, label: "Community", link: "#community" },
   { icon: FaClipboardList, label: "Posts", link: "#posts" },
 ];
 

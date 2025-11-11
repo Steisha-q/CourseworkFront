@@ -20,6 +20,10 @@ import {
   ThingsPage,
   GainPage,
   EditProfilePage,
+  CreatePage,
+  MasterPostPage,
+  CommunityPage,
+  SearchPage,
   PreferencesPage,
 } from "./pages";
 import "./App.css";
@@ -73,7 +77,16 @@ function App() {
 
           <Route element={<Layouts.MasterLayout />}>
             <Route path={ROUTES.main()} element={<MainPage />} />
+
             <Route path={ROUTES.mprofile()} element={<MProfilePage />} />
+
+            <Route path={ROUTES.create()} element={<CreatePage />} />
+
+            <Route path={ROUTES.masterpost()} element={<MasterPostPage />} />
+
+            <Route path={ROUTES.community()} element={<CommunityPage />} />
+
+            <Route path={ROUTES.search()} element={<SearchPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
