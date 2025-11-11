@@ -20,6 +20,7 @@ import {
   ThingsPage,
   GainPage,
   EditProfilePage,
+  PreferencesPage,
 } from "./pages";
 import "./App.css";
 import { PostsPage } from "./pages/manager/PostsPage";
@@ -31,16 +32,18 @@ function App() {
         <Routes>
           <Route path={ROUTES.home()} element={<HomePage />} />
           <Route path={ROUTES.feedback()} element={<FeedbackPage />} />
-          <Route
-            path={ROUTES.createcommunity()}
-            element={<CreateCommunityPage />}
-          />
+          <Route path={ROUTES.prefer()} element={<PreferencesPage />} />
+          
 
           <Route element={<Layouts.UserLayout />}>
             <Route path={ROUTES.profile()} element={<ProfilePage />} />
             <Route path={ROUTES.shopping()} element={<ShoppingPage />} />
             <Route path={ROUTES.gain()} element={<GainPage />} />
             <Route path={ROUTES.editprofile()} element={<EditProfilePage />} />
+            <Route
+            path={ROUTES.createcommunity()}
+            element={<CreateCommunityPage />}
+          />
           </Route>
 
           <Route element={<Layouts.AuthLayout />}>
