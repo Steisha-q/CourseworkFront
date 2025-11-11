@@ -1,13 +1,34 @@
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './ProfilePage.css';
 
 export const ProfilePage = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleEditProfile = () => {
+    navigate('/user/editprofile');  
+  };
+
   return (
     <div className="profile-page">
       <div className="profile-header">
         <div className="profile-main">
-          <div className="profile-info">
+          <div className="profile-avatar">
+            <div className="avatar-placeholder">👤</div>
+          </div>
+          
+          <div className="profile-content">
             <div className="profile-top">
-              <h2 className="nickname">Nickname</h2>
+              <div className="profile-name-section">
+                <h2 className="nickname">Nickname</h2>
+                 <button 
+                  className="edit-profile-btn" 
+                  onClick={handleEditProfile}  
+                >
+                  Edit profile
+                </button>
+              </div>
+              
               <div className="stats">
                 <div className="stat">
                   <span className="stat-number">8</span>
@@ -28,15 +49,31 @@ export const ProfilePage = () => {
               <p>About me</p>
             </div>
           </div>
-          
-          <div className="profile-actions">
-            <button className="edit-profile-btn">Edit profile</button>
-          </div>
         </div>
       </div>
 
+      <div className="profile-navigation">
+        <Link 
+          to="/profile"
+          className={`nav-btn ${location.pathname === '/profile' ? 'active' : ''}`}
+        >
+          Posts
+        </Link>
+        <Link 
+          to="/gains"
+          className={`nav-btn ${location.pathname === '/gains' ? 'active' : ''}`}
+        >
+          Gains
+        </Link>
+        <Link 
+          to="/shopping"
+          className={`nav-btn ${location.pathname === '/shopping' ? 'active' : ''}`}
+        >
+          Orders
+        </Link>
+      </div>
+
       <div className="posts-section">
-        <h3 className="posts-title">Posts</h3>
         <div className="posts-grid">
           {[1, 2, 3, 4, 5, 6].map((post) => (
             <div key={post} className="post-item">

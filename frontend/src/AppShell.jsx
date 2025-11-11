@@ -18,6 +18,8 @@ import {
   RaffleDetailPage,
   DeliveryStatusPage,
   ThingsPage,
+  GainPage,
+  EditProfilePage,
 } from "./pages";
 import "./App.css";
 import { PostsPage } from "./pages/manager/PostsPage";
@@ -37,6 +39,8 @@ function App() {
           <Route element={<Layouts.UserLayout />}>
             <Route path={ROUTES.profile()} element={<ProfilePage />} />
             <Route path={ROUTES.shopping()} element={<ShoppingPage />} />
+            <Route path={ROUTES.gain()} element={<GainPage />} />
+            <Route path={ROUTES.editprofile()} element={<EditProfilePage />} />
           </Route>
 
           <Route element={<Layouts.AuthLayout />}>

@@ -35,5 +35,9 @@ export const ROUTES = {
     
     status: () => '/manager/status',
     
-    things:()=>'/manager/things'
+    things:()=>'/manager/things',
+
+    gain:()=>'/gains',
+
+    editprofile: () => '/user/editprofile'
 }
