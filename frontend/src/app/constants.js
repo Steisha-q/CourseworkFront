@@ -27,6 +27,8 @@ export const ROUTES = {
     
     mprofile: () => '/master/Mprofile',
 
+    editMprofile:()=>'/master/Mprofile/edit',
+
     raffles: () => '/manager/raffles',
     
     raffledetail: () => '/manager/raffles/detail',
