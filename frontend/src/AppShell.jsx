@@ -21,6 +21,7 @@ import {
   GainPage,
   EditProfilePage,
   CreatePage,
+  MasterPostPage,
 } from "./pages";
 import "./App.css";
 import { PostsPage } from "./pages/manager/PostsPage";
@@ -73,6 +74,7 @@ function App() {
             <Route path={ROUTES.main()} element={<MainPage />} />
             <Route path={ROUTES.mprofile()} element={<MProfilePage />} />
             <Route path={ROUTES.create()} element={<CreatePage />} />
+            <Route path={ROUTES.masterpost()} element={<MasterPostPage />} />
           </Route>
         </Routes>
       </BrowserRouter>

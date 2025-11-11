@@ -43,5 +43,7 @@ export const ROUTES = {
 
     editprofile: () => '/user/editprofile',
 
-    create:()=>'/master/create'
+    create: () => '/master/create',
+    
+    masterpost:()=>'/master/post'
 }
