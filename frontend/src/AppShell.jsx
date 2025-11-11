@@ -16,6 +16,8 @@ import {
   MProfilePage,
   RafflesPage,
   RaffleDetailPage,
+  DeliveryStatusPage,
+  ThingsPage,
   GainPage,
   EditProfilePage,
 } from "./pages";
@@ -58,6 +60,10 @@ function App() {
             <Route path={ROUTES.raffles()} element={<RafflesPage />} />
 
             <Route path={ROUTES.post()} element={<PostsPage />} />
+
+            <Route path={ROUTES.status()} element={<DeliveryStatusPage />} />
+
+            <Route path={ROUTES.things()} element={<ThingsPage />} />
 
             <Route path="/manager/raffles/:id" element={<RaffleDetailPage />} />
           </Route>

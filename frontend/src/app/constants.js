@@ -31,7 +31,11 @@ export const ROUTES = {
     
     raffledetail: () => '/manager/raffles/detail',
     
-    post:()=>'/manager/post',
+    post: () => '/manager/post',
+    
+    status: () => '/manager/status',
+    
+    things:()=>'/manager/things',
 
     gain:()=>'/gains',
 
