@@ -23,6 +23,7 @@ import {
   CreatePage,
   MasterPostPage,
   CommunityPage,
+  SearchPage,
 } from "./pages";
 import "./App.css";
 import { PostsPage } from "./pages/manager/PostsPage";
@@ -81,6 +82,8 @@ function App() {
             <Route path={ROUTES.masterpost()} element={<MasterPostPage />} />
 
             <Route path={ROUTES.community()} element={<CommunityPage />} />
+
+            <Route path={ROUTES.search()} element={<SearchPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
