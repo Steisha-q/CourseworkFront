@@ -1,132 +1,248 @@
-import React from "react";
+import { useState, useMemo } from "react";
 import styles from "./styles.module.css";
 
-// Міні-компонент ProductCard, включений сюди
-const ProductCard = ({ name, size, cost, deliveryType, imageSrc }) => (
-  // Клас .product-item відповідає за контейнер картинки та тексту
-  <div className={styles["product-item"]}>
-    {/* Контейнер для фото (на референсі це просто placeholder) */}
-    <div className={styles["product-img-container"]}>
-      <img src={imageSrc} alt={name} className={styles["product-image"]} />
-    </div>
+export const MProfilePage = () => {
+  const [activeTab, setActiveTab] = useState("products");
 
-    <div className={styles["product-details"]}>
-      {/* Використовуємо <strong> для виділення міток, як на скріншоті */}
-      <p>**Name:** {name}</p>
-      <p>**Size:** {size}**</p>
-      <p>**Cost:** {cost} ₴</p>
-      <p>**Delivery type:** {deliveryType}**</p>
-    </div>
-    <span className={styles["checkbox-placeholder"]}>☐</span>
-  </div>
-);
-
-const MProfilePage = () => {
-  const profileData = {
-    nickname: "Nickname",
-    posts: 8,
-    followers: "1m.",
-    signed: 51,
-    aboutMe: "About me",
-    profilePic: "/path/to/profile/image.png",
-  };
-
-  const productsData = [
+  const products = [
     {
-      name: "Cosy Shirt",
-      size: 43,
-      cost: 150,
-      deliveryType: "Nova Poshta",
-      imageSrc: "/img/shirt.png",
+      id: 1,
+      image: "/api/placeholder/400/400",
+      title: "Cosy Shirt",
+      size: "43",
+      cost: "150 €",
+      delivery: "Nova Poshta",
+      likes: 124,
+      comments: 23,
     },
     {
-      name: "Origin Kneetwear",
-      size: 43,
-      cost: 400,
-      deliveryType: "Nova Poshta",
-      imageSrc: "/img/knitwear.png",
+      id: 2,
+      image: "/api/placeholder/400/400",
+      title: "Comfortable Sneakers",
+      size: "43",
+      cost: "400 €",
+      delivery: "Nova Poshta",
+      likes: 89,
+      comments: 15,
     },
     {
-      name: "Comfortable Sneakers",
-      size: 39,
-      cost: 320,
-      deliveryType: "Ukrposhta",
-      imageSrc: "/img/sneakers.png",
+      id: 3,
+      image: null,
+      title: "Elegant Coat",
+      size: "M",
+      cost: "280 €",
+      delivery: "Ukrposhta",
+      likes: 67,
+      comments: 8,
     },
     {
-      name: "Elegant Coat",
-      size: 43,
-      cost: 320,
-      deliveryType: "Ukrposhta",
-      imageSrc: "/img/coat.png",
+      id: 4,
+      image: "/api/placeholder/400/400",
+      title: "Origin Kneetwear",
+      size: "L",
+      cost: "320 €",
+      delivery: "Nova Poshta",
+      likes: 156,
+      comments: 31,
     },
     {
-      name: "Nice Panama",
-      size: "for teens",
-      cost: 220,
-      deliveryType: "Nova Poshta",
-      imageSrc: "/img/panama1.png",
+      id: 5,
+      image: "/api/placeholder/400/400",
+      title: "Classic Denim Jacket",
+      size: "42",
+      cost: "190 €",
+      delivery: "Ukrposhta",
+      likes: 98,
+      comments: 12,
     },
     {
-      name: "Nice Panama",
-      size: "for teens",
-      cost: 220,
-      deliveryType: "Nova Poshta",
-      imageSrc: "/img/necklace.png",
+      id: 6,
+      image: "/api/placeholder/400/400",
+      title: "Winter Boots",
+      size: "44",
+      cost: "350 €",
+      delivery: "Nova Poshta",
+      likes: 76,
+      comments: 9,
     },
   ];
 
-  const column1 = productsData.filter((_, index) => index % 2 === 0);
-  const column2 = productsData.filter((_, index) => index % 2 !== 0);
+  const stats = {
+    products: products.length,
+    followers: "1.2k",
+    signed: 51,
+  };
+
+  const handleEditProfile = () => {
+    console.log("Edit profile clicked");
+  };
+
+  const handleEditProduct = (productId) => {
+    console.log("Edit product:", productId);
+  };
+
+  const handleDeleteProduct = (productId) => {
+    console.log("Delete product:", productId);
+  };
 
   return (
-    <div className={styles["page-container"]}>
-      {/* Лівий сайдбар (якщо він є у вас) */}
-      <div className={styles["sidebar"]}>
-        {/* ... вміст сайдбару, якщо потрібно ... */}
+    <div className={styles.profilePage}>
+      <div className={styles.profileHeader}>
+        <div className={styles.profileMain}>
+          <div className={styles.profileAvatar}>
+            <div className={styles.avatarPlaceholder}>👤</div>
+          </div>
+
+          <div className={styles.profileContent}>
+            <div className={styles.profileTop}>
+              <h1 className={styles.profileName}>Nickname</h1>
+              <button
+                className={styles.editProfileBtn}
+                onClick={handleEditProfile}
+              >
+                Edit profile
+              </button>
+            </div>
+
+            <div className={styles.stats}>
+              <div className={styles.stat}>
+                <span className={styles.statNumber}>{stats.products}</span>
+                <span className={styles.statLabel}>Posts</span>
+              </div>
+              <div className={styles.stat}>
+                <span className={styles.statNumber}>{stats.followers}</span>
+                <span className={styles.statLabel}>Followers</span>
+              </div>
+              <div className={styles.stat}>
+                <span className={styles.statNumber}>{stats.signed}</span>
+                <span className={styles.statLabel}>Signed</span>
+              </div>
+            </div>
+
+            <div className={styles.profileBio}>
+              <p>About me</p>
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* Основний контент профілю */}
-      <div className={styles["profile-content-wrapper"]}>
-        {/* Блок Шапки Профілю */}
-        <div className={styles["profile-header"]}>
-          <div className={styles["header-left"]}>
-            <div className={styles["profile-pic-placeholder"]}>
-              <span className={styles["profile-label-text"]}>Profile</span>
-            </div>
-            <p className={styles["nickname"]}>{profileData.nickname}</p>
-          </div>
+      <div className={styles.profileNavigation}>
+        <button
+          className={`${styles.navBtn} ${
+            activeTab === "products" ? styles.navBtnActive : ""
+          }`}
+          onClick={() => setActiveTab("products")}
+        >
+          <span>📦</span>
+          Products
+        </button>
+        <button
+          className={`${styles.navBtn} ${
+            activeTab === "saved" ? styles.navBtnActive : ""
+          }`}
+          onClick={() => setActiveTab("saved")}
+        >
+          <span>🔖</span>
+          Saved
+        </button>
+        <button
+          className={`${styles.navBtn} ${
+            activeTab === "tagged" ? styles.navBtnActive : ""
+          }`}
+          onClick={() => setActiveTab("tagged")}
+        >
+          <span>🏷️</span>
+          Tagged
+        </button>
+      </div>
 
-          <div className={styles["header-right"]}>
-            <button className={styles["edit-button"]}>Edit profile</button>
-            <div className={styles["stats-row"]}>
-              <span>**{profileData.posts}** Posts</span>
-              <span>**{profileData.followers}** Followers</span>
-              <span>**{profileData.signed}** Signed</span>
-            </div>
-          </div>
-          <p className={styles["about-me-link"]}>{profileData.aboutMe}</p>
-        </div>
+      <div className={styles.productsSection}>
+        {activeTab === "products" && (
+          <div className={styles.productsGrid}>
+            {products.length === 0 ? (
+              <div className={styles.emptyState}>
+                <p>No products yet</p>
+                <p>Start creating and your products will appear here</p>
+              </div>
+            ) : (
+              products.map((product) => (
+                <div key={product.id} className={styles.productCard}>
+                  <div className={styles.productImageContainer}>
+                    {product.image ? (
+                      <img
+                        src={product.image}
+                        alt={product.title}
+                        className={styles.productImage}
+                      />
+                    ) : (
+                      <div className={styles.productPlaceholder}>
+                        {product.title}
+                      </div>
+                    )}
+                  </div>
 
-        {/* Блок Навігації (Таби) */}
-        <div className={styles["tab-navigation"]}>
-          <div className={styles["tab-item-active"]}></div>
-          <div className={styles["tab-item"]}></div>
-        </div>
+                  <div className={styles.productInfo}>
+                    <h3 className={styles.productTitle}>{product.title}</h3>
 
-        {/* Блок Товарів (Сітка) */}
-        <div className={styles["products-grid"]}>
-          <div className={styles["products-column"]}>
-            {column1.map((product, index) => (
-              <ProductCard key={index} {...product} />
-            ))}
+                    <div className={styles.productDetails}>
+                      <div className={styles.productDetail}>
+                        <span className={styles.detailLabel}>Name:</span>
+                        <span className={styles.detailValue}>
+                          {product.title}
+                        </span>
+                      </div>
+                      <div className={styles.productDetail}>
+                        <span className={styles.detailLabel}>Size:</span>
+                        <span className={styles.detailValue}>
+                          {product.size}
+                        </span>
+                      </div>
+                      <div className={styles.productDetail}>
+                        <span className={styles.detailLabel}>
+                          Delivery type:
+                        </span>
+                        <span className={styles.detailValue}>
+                          {product.delivery}
+                        </span>
+                      </div>
+                    </div>
+
+                    <p className={styles.productPrice}>{product.cost}</p>
+
+                    <div className={styles.productActions}>
+                      <button
+                        className={`${styles.actionBtn} ${styles.editBtn}`}
+                        onClick={() => handleEditProduct(product.id)}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        className={`${styles.actionBtn} ${styles.deleteBtn}`}
+                        onClick={() => handleDeleteProduct(product.id)}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))
+            )}
           </div>
-          <div className={styles["products-column"]}>
-            {column2.map((product, index) => (
-              <ProductCard key={index} {...product} />
-            ))}
+        )}
+
+        {activeTab === "saved" && (
+          <div className={styles.emptyState}>
+            <p>No saved items</p>
+            <p>Products you save will appear here</p>
           </div>
-        </div>
+        )}
+
+        {activeTab === "tagged" && (
+          <div className={styles.emptyState}>
+            <p>No tagged photos</p>
+            <p>Photos you're tagged in will appear here</p>
+          </div>
+        )}
       </div>
     </div>
   );

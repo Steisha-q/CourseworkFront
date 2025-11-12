@@ -1,201 +1,345 @@
-/* Контейнер сторінки */
-.page-container {
-    display: flex;
-    font-family: 'Inter', sans-serif;
+.profilePage {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
     min-height: 100vh;
-    background-color: #f4f5f7;
 }
 
-/* Сайдбар */
-.sidebar {
-    width: 220px;
-    background-color: #fff;
-    border-right: 1px solid #e0e0e0;
-    padding: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.03);
+.profileHeader {
+    padding: 30px 20px 20px;
+    border-bottom: 1px solid #f0f0f0;
 }
 
-/* Основний блок профілю */
-.profile-content-wrapper {
-    flex-grow: 1;
-    margin: 20px;
-    padding: 30px;
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-}
-
-/* Шапка профілю */
-.profile-header {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 20px;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 20px;
-    margin-bottom: 20px;
-}
-
-.header-left {
+.profileMain {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 30px;
+    max-width: 935px;
+    margin: 0 auto;
 }
 
-.profile-pic-placeholder {
-    width: 70px;
-    height: 70px;
+.profileAvatar {
+    flex-shrink: 0;
+}
+
+.avatarPlaceholder {
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
-    background-color: #ffe0b2;
+    background: #f0f0f0;
     display: flex;
-    justify-content: center;
     align-items: center;
-    font-weight: bold;
-    color: #555;
-    font-size: 14px;
+    justify-content: center;
+    font-size: 60px;
+    border: 2px solid #685A5A;
 }
 
-.nickname {
-    font-size: 20px;
-    font-weight: 700;
-    color: #222;
+.profileContent {
+    flex: 1;
 }
 
-.header-right {
-    margin-left: auto;
+.profileTop {
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 10px;
-}
-
-.edit-button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 6px 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 600;
-    transition: background-color 0.2s;
-}
-
-.edit-button:hover {
-    background-color: #0056b3;
-}
-
-.stats-row {
-    display: flex;
+    align-items: center;
     gap: 20px;
-    font-size: 14px;
-    color: #555;
-}
-
-.about-me-link {
-    color: #007bff;
-    font-size: 14px;
-    margin-top: 10px;
-    cursor: pointer;
-}
-
-/* Таби */
-.tab-navigation {
-    display: flex;
-    justify-content: start;
-    gap: 10px;
     margin-bottom: 20px;
 }
 
-.tab-item,
-.tab-item-active {
-    padding: 6px 16px;
-    border-radius: 6px;
-    cursor: pointer;
+.profileName {
+    font-size: 28px;
+    font-weight: 300;
+    margin: 0;
+    color: #000000;
+}
+
+.editProfileBtn {
+    background: transparent;
+    color: #000000;
+    border: 1px solid #dbdbdb;
+    padding: 6px 12px;
+    border-radius: 4px;
     font-size: 14px;
     font-weight: 500;
-    color: #555;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.tab-item-active {
-    background-color: #007bff;
-    color: #fff;
+.editProfileBtn:hover {
+    background: #f8f8f8;
 }
 
-/* Сітка продуктів */
-.products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 15px;
+.stats {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 20px;
 }
 
-/* Картка продукту */
-.product-item {
-    background-color: #fdfdfd;
-    border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-    overflow: hidden;
+.stat {
     display: flex;
     flex-direction: column;
-    position: relative;
-    transition: transform 0.2s;
+    align-items: center;
 }
 
-.product-item:hover {
-    transform: translateY(-3px);
+.statNumber {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000000;
 }
 
-.product-img-container {
-    width: 100%;
-    height: 180px;
-    background-color: #f7f7f7;
+.statLabel {
+    font-size: 14px;
+    color: #666;
+}
+
+.profileBio {
+    color: #000000;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.profileBio p {
+    margin: 0 0 8px 0;
+}
+
+.profileBio p:last-child {
+    margin-bottom: 0;
+}
+
+.profileNavigation {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    border-top: 1px solid #f0f0f0;
+    max-width: 935px;
+    margin: 0 auto;
+}
+
+.navBtn {
+    background: none;
+    border: none;
+    padding: 16px 0;
+    color: #8e8e8e;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 6px;
 }
 
-.product-image {
+.navBtn:hover {
+    color: #000000;
+}
+
+.navBtnActive {
+    color: #000000;
+    border-top: 1px solid #000000;
+    margin-top: -1px;
+}
+
+.productsSection {
+    max-width: 935px;
+    margin: 0 auto;
+    padding: 30px 0;
+}
+
+.productsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+.productCard {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.productCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.productImageContainer {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.productImage {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.3s ease;
 }
 
-.product-details {
-    padding: 10px 12px;
+.productCard:hover .productImage {
+    transform: scale(1.05);
+}
+
+.productPlaceholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8f8f8;
+    color: #666;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.productInfo {
+    padding: 20px;
+}
+
+.productTitle {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 12px 0;
+    color: #000000;
+}
+
+.productDetails {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 8px;
 }
 
-.product-details p {
-    margin: 0;
+.productDetail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+.detailLabel {
+    color: #666;
+    font-weight: 500;
+}
+
+.detailValue {
+    color: #000000;
+    font-weight: 600;
+}
+
+.productPrice {
+    font-size: 20px;
+    font-weight: 700;
+    color: #685A5A;
+    margin: 15px 0 0 0;
+    text-align: right;
+}
+
+.productActions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.actionBtn {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
     font-size: 13px;
-    color: #333;
-}
-
-.checkbox-placeholder {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 16px;
-    color: #555;
+    font-weight: 500;
     cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-/* Адаптивність */
+.editBtn {
+    background: #685A5A;
+    color: white;
+}
+
+.editBtn:hover {
+    background: #5a4d4d;
+}
+
+.deleteBtn {
+    background: #ffebee;
+    color: #c62828;
+}
+
+.deleteBtn:hover {
+    background: #ffcdd2;
+}
+
+.emptyState {
+    text-align: center;
+    padding: 100px 20px;
+    color: #666;
+    grid-column: 1 / -1;
+}
+
+.emptyState p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
 @media (max-width: 768px) {
-    .page-container {
+    .profileMain {
         flex-direction: column;
+        text-align: center;
+        gap: 20px;
     }
 
-    .sidebar {
-        width: 100%;
-        border-right: none;
-        border-bottom: 1px solid #e0e0e0;
+    .profileTop {
+        flex-direction: column;
+        gap: 15px;
     }
 
-    .profile-content-wrapper {
-        margin: 10px;
-        padding: 20px;
+    .stats {
+        justify-content: center;
+    }
+
+    .productsGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .profileNavigation {
+        gap: 30px;
+    }
+
+    .avatarPlaceholder {
+        width: 120px;
+        height: 120px;
+        font-size: 48px;
+    }
+
+    .productImageContainer {
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .productsGrid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .profileNavigation {
+        gap: 20px;
+    }
+
+    .stats {
+        gap: 20px;
+    }
+
+    .productActions {
+        flex-direction: column;
     }
 }
