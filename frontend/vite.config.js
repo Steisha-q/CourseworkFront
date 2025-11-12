@@ -8,7 +8,8 @@ export default defineConfig({
   resolve: {
     alias: {
       '@app': path.resolve(__dirname, './src/app'),
-      '@modules': path.resolve(__dirname, './src/modules')
+      '@modules': path.resolve(__dirname, './src/modules'),
+      '@hooks': path.resolve(__dirname, './src/hooks')
     },
   },
 })

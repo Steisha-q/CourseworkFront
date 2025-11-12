@@ -29,11 +29,13 @@ import {
 } from "./pages";
 import "./App.css";
 import { PostsPage } from "./pages/manager/PostsPage";
+import { AuthProvider } from "./app/auth/auth.context";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
+      <AuthProvider>
         <Routes>
           <Route path={ROUTES.home()} element={<HomePage />} />
           <Route path={ROUTES.feedback()} element={<FeedbackPage />} />
@@ -91,6 +93,7 @@ function App() {
             <Route path={ROUTES.search()} element={<SearchPage />} />
           </Route>
         </Routes>
+      </AuthProvider>
       </BrowserRouter>
     </div>
   );

@@ -1,22 +1,31 @@
 import React, { useState } from "react";
 import "./auth.form.css";
 import { AuthHeader } from "./auth.header";
+import { useRequest, useAuth } from "@hooks";
+import { api } from "../api";
 
 export const AuthForm = ({ isLogin = false }) => {
+  const { makeRequest } = useRequest({
+    api: api.login
+  });
+
+  const { login } = useAuth();
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
-    confirmPassword: "",
+    password_confirm: "",
   });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    const data = await makeRequest(formData);
+    login(data.access_token, data.role);
   };
 
   return (
@@ -53,9 +62,9 @@ export const AuthForm = ({ isLogin = false }) => {
         {!isLogin && (
           <input
             type="password"
-            name="confirmPassword"
+            name="password_confirm"
             placeholder="Confirm Password"
-            value={formData.confirmPassword}
+            value={formData.password_confirm}
             onChange={handleChange}
           />
         )}
