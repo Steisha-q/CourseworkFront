@@ -51,5 +51,7 @@ export const ROUTES = {
     
     search:()=>'/master/search',
     
-    prefer: () => '/user/preferences'
+    prefer: () => '/user/preferences',
+
+    searchcommunity: () => '/user/searchcommunity'
 }

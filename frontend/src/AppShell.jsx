@@ -25,6 +25,7 @@ import {
   CommunityPage,
   SearchPage,
   PreferencesPage,
+  SearchCommunityPage,
 } from "./pages";
 import "./App.css";
 import { PostsPage } from "./pages/manager/PostsPage";
@@ -44,6 +45,7 @@ function App() {
             <Route path={ROUTES.shopping()} element={<ShoppingPage />} />
             <Route path={ROUTES.gain()} element={<GainPage />} />
             <Route path={ROUTES.editprofile()} element={<EditProfilePage />} />
+            <Route path={ROUTES.searchcommunity()} element={<SearchCommunityPage />} />
             <Route
             path={ROUTES.createcommunity()}
             element={<CreateCommunityPage />}
