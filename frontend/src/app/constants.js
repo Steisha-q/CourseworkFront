@@ -49,7 +49,7 @@ export const ROUTES = {
     
     community: () => '/master/community',
     
-    search:()=>'/master/search'
+    search:()=>'/master/search',
     
     prefer: () => '/user/preferences'
 }
