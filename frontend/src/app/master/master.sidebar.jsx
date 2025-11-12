@@ -1,28 +1,32 @@
 import React from "react";
+import { ROUTES } from "../constants";
+import { useLocation } from "react-router-dom";
 import "./master.sidebar.css";
 
 import {
-  FaHome,
   FaSearch,
-  FaEnvelope,
   FaPlusCircle,
   FaUser,
-  FaCommentDots,
   FaFire,
   FaClipboardList,
   FaSignOutAlt,
 } from "react-icons/fa";
 
 const menuItems = [
-  { icon: FaHome, label: "Home", link: "#home" },
-  { icon: FaSearch, label: "Search", link: "#search" },
-  { icon: FaPlusCircle, label: "Create", link: "#create" },
-  { icon: FaUser, label: "Profile", link: "#profile", active: true },
-  { icon: FaFire, label: "Community", link: "#community" },
-  { icon: FaClipboardList, label: "Posts", link: "#posts" },
+  { icon: FaUser, label: "Profile", route: ROUTES.mprofile() },
+  { icon: FaSearch, label: "Search", route: ROUTES.search() },
+  { icon: FaPlusCircle, label: "Create", route: ROUTES.create() },
+  { icon: FaFire, label: "Community", route: ROUTES.community() },
+  { icon: FaClipboardList, label: "Posts", route: ROUTES.masterpost() },
 ];
 
 const MasterSidebar = () => {
+  const location = useLocation();
+
+  const isActiveRoute = (route) => {
+    return location.pathname === route;
+  };
+
   return (
     <div className="master-sidebar">
       <div>
@@ -32,14 +36,14 @@ const MasterSidebar = () => {
           <ul className="nav-links">
             {menuItems.map((item, index) => {
               const IconComponent = item.icon;
-              const isActive = item.active;
+              const isActive = isActiveRoute(item.route);
 
               return (
                 <li
                   key={index}
                   className={`sidebar-nav-item ${isActive ? "active" : ""}`}
                 >
-                  <a href={item.link} className="sidebar-nav-link">
+                  <a href={item.route} className="sidebar-nav-link">
                     <IconComponent className="sidebar-icon" />
                     <span>{item.label}</span>
                   </a>
@@ -51,7 +55,7 @@ const MasterSidebar = () => {
       </div>
 
       <div className="sidebar-logout-section">
-        <a href="#logout" className="sidebar-logout-link">
+        <a href="/signIn" className="sidebar-logout-link">
           <FaSignOutAlt className="sidebar-icon" />
           Logout
         </a>
