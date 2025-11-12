@@ -27,6 +27,8 @@ export const ROUTES = {
     
     mprofile: () => '/master/Mprofile',
 
+    editMprofile:()=>'/master/Mprofile/edit',
+
     raffles: () => '/manager/raffles',
     
     raffledetail: () => '/manager/raffles/detail',
@@ -40,6 +42,16 @@ export const ROUTES = {
     gain:()=>'/gains',
 
     editprofile: () => '/user/editprofile',
+
+    create: () => '/master/create',
     
-    prefer: () => '/user/preferences'
+    masterpost: () => '/master/post',
+    
+    community: () => '/master/community',
+    
+    search:()=>'/master/search',
+    
+    prefer: () => '/user/preferences',
+
+    searchcommunity: () => '/user/searchcommunity'
 }

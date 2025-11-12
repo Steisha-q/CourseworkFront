@@ -20,7 +20,12 @@ import {
   ThingsPage,
   GainPage,
   EditProfilePage,
+  CreatePage,
+  MasterPostPage,
+  CommunityPage,
+  SearchPage,
   PreferencesPage,
+  SearchCommunityPage,
 } from "./pages";
 import "./App.css";
 import { PostsPage } from "./pages/manager/PostsPage";
@@ -40,6 +45,7 @@ function App() {
             <Route path={ROUTES.shopping()} element={<ShoppingPage />} />
             <Route path={ROUTES.gain()} element={<GainPage />} />
             <Route path={ROUTES.editprofile()} element={<EditProfilePage />} />
+            <Route path={ROUTES.searchcommunity()} element={<SearchCommunityPage />} />
             <Route
             path={ROUTES.createcommunity()}
             element={<CreateCommunityPage />}
@@ -73,7 +79,16 @@ function App() {
 
           <Route element={<Layouts.MasterLayout />}>
             <Route path={ROUTES.main()} element={<MainPage />} />
+
             <Route path={ROUTES.mprofile()} element={<MProfilePage />} />
+
+            <Route path={ROUTES.create()} element={<CreatePage />} />
+
+            <Route path={ROUTES.masterpost()} element={<MasterPostPage />} />
+
+            <Route path={ROUTES.community()} element={<CommunityPage />} />
+
+            <Route path={ROUTES.search()} element={<SearchPage />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -1,0 +1,370 @@
+.searchPage {
+    max-width: 100%;
+    margin: 0;
+    padding: 20px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #F5F9F3;
+}
+
+.searchContainer {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 2px 10px rgba(135, 168, 120, 0.1);
+    margin-bottom: 30px;
+    border: 1px solid #DBF9B8;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 16px 20px;
+    border: 2px solid #E8F4DD;
+    border-radius: 12px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+    margin-bottom: 20px;
+    background: #FBFFF9;
+}
+
+.searchInput:focus {
+    outline: none;
+    border-color: #87A878;
+    background: #ffffff;
+}
+
+.searchTabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.searchTab {
+    flex: 1;
+    padding: 12px 20px;
+    background: none;
+    border: 2px solid #E8F4DD;
+    border-radius: 8px;
+    color: #87A878;
+    font-weight: 500;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.searchTab:hover {
+    background: rgba(135, 168, 120, 0.08);
+    border-color: #A1CD8C;
+}
+
+.searchTabActive {
+    background: #DBF9B8;
+    border-color: #87A878;
+    color: #2C4A2C;
+    font-weight: 600;
+}
+
+.resultsSection {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.resultsTitle {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #2C4A2C;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.resultsCount {
+    font-size: 14px;
+    font-weight: normal;
+    color: #87A878;
+}
+
+.resultsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 20px;
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 5px;
+    align-content: start;
+}
+ 
+.resultsGrid::-webkit-scrollbar {
+    width: 6px;
+}
+
+.resultsGrid::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.resultsGrid::-webkit-scrollbar-thumb {
+    background: #87A878;
+    border-radius: 3px;
+}
+
+.resultsGrid::-webkit-scrollbar-thumb:hover {
+    background: #769A67;
+}
+
+.userCard,
+.communityCard {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 2px 10px rgba(135, 168, 120, 0.08);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    height: 140px;
+    border: 1px solid #F0F7E9;
+}
+
+.userCard:hover,
+.communityCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(135, 168, 120, 0.15);
+    border-color: #DBF9B8;
+}
+
+.userAvatar,
+.communityAvatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #87A878;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.communityAvatar {
+    background: #A1CD8C;
+    font-size: 24px;
+}
+
+.userInfo,
+.communityInfo {
+    flex: 1;
+    min-width: 0;
+}
+
+.userName {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 5px 0;
+    color: #2C4A2C;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.userNickname {
+    font-size: 14px;
+    color: #87A878;
+    margin: 0 0 8px 0;
+}
+
+.userBio {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.communityName {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    color: #2C4A2C;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.communityDescription {
+    font-size: 14px;
+    color: #666;
+    margin: 0 0 8px 0;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.communityStats {
+    display: flex;
+    gap: 15px;
+}
+
+.communityStat {
+    font-size: 13px;
+    color: #87A878;
+    font-weight: 500;
+}
+
+.followBtn,
+.joinBtn {
+    background: #87A878;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.followBtn:hover,
+.joinBtn:hover {
+    background: #769A67;
+}
+
+.followingBtn,
+.joinedBtn {
+    background: #DBF9B8;
+    color: #2C4A2C;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.followingBtn:hover,
+.joinedBtn:hover {
+    background: #CAE2BC;
+}
+
+.emptyState {
+    text-align: center;
+    padding: 60px 20px;
+    color: #87A878;
+    grid-column: 1 / -1;
+}
+
+.emptyState p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+}
+ 
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 30px;
+    padding: 20px 0;
+}
+
+.paginationBtn {
+    padding: 10px 16px;
+    border: 2px solid #E8F4DD;
+    background: white;
+    color: #87A878;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.paginationBtn:hover:not(:disabled) {
+    background: #DBF9B8;
+    border-color: #87A878;
+}
+
+.paginationBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.paginationBtnActive {
+    background: #87A878;
+    color: white;
+    border-color: #87A878;
+}
+
+.paginationNumbers {
+    display: flex;
+    gap: 5px;
+}
+
+@media (max-width: 1024px) {
+    .resultsGrid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .searchPage {
+        padding: 15px;
+    }
+
+    .searchContainer {
+        padding: 20px;
+    }
+
+    .searchTabs {
+        flex-direction: column;
+    }
+
+    .resultsGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .userCard,
+    .communityCard {
+        height: auto;
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+    }
+
+    .userInfo,
+    .communityInfo {
+        text-align: center;
+    }
+
+    .communityStats {
+        justify-content: center;
+    }
+
+    .pagination {
+        flex-wrap: wrap;
+    }
+
+    .paginationNumbers {
+        order: -1;
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+}
