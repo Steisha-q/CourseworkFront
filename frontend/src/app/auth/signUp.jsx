@@ -1,12 +1,19 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
 import "./auth.form.css";
 import { AuthHeader } from "./auth.header";
 import { useRequest } from "@hooks";
 import { api } from "@app/api";
+import { ROUTES } from "../constants";
+import { useAuth } from "./auth.context";
+import { LoaderOverlay, ErrorArea } from "@modules/core";
 
-export const AuthForm = ({ isLogin = false }) => {
-  const { makeRequest } = useRequest({
-    api: api.signup
+
+export const SignUp = ({ isLogin = false }) => {
+  const navigate = useNavigate();
+  const { login } = useAuth();
+  const { makeRequest, isLoading, error } = useRequest({
+    api: api.signup,
   });
 
   const [formData, setFormData] = useState({
@@ -23,14 +30,20 @@ export const AuthForm = ({ isLogin = false }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = await makeRequest(formData);
-    debugger
-    console.log("Form submitted:", data);
+    if (!data) return;
+    login(data.access_token, data.role);
+  };
+
+  const handleGoSignIn = () => {
+    navigate(ROUTES.signIn());
   };
 
   return (
     <div className="auth-form-wrapper">
       <AuthHeader />
-      <h2 className="auth-title">{isLogin ? "Sign in to account" : "Create an account"}</h2>
+      <h2 className="auth-title">
+        {isLogin ? "Sign in to account" : "Create an account"}
+      </h2>
 
       <form className="auth-form" onSubmit={handleSubmit}>
         {!isLogin && (
@@ -71,17 +84,26 @@ export const AuthForm = ({ isLogin = false }) => {
         <div className="auth-buttons">
           {!isLogin ? (
             <>
-              <button type="submit" className="register-btn">Register</button>
-              <button type="button" className="signin-btn">Sign In</button>
+              <button type="submit" className="button active-btn">
+                Register
+              </button>
+              <button type="button" className="button" onClick={handleGoSignIn}>
+                Go to Sign In
+              </button>
             </>
           ) : (
-            <button type="submit" className="signin-btn">Sign In</button>
+            <button type="submit" className="signin-btn">
+              Sign In
+            </button>
           )}
         </div>
 
         <p className="auth-policy">
-          By reprinting your details, you appreciate our Terms Consultants, and Privacy and Cookies Policy.
+          By reprinting your details, you appreciate our Terms Consultants, and
+          Privacy and Cookies Policy.
         </p>
+        <LoaderOverlay show={isLoading} />
+        <ErrorArea message={error && "Wrong email or password"} />
       </form>
     </div>
   );

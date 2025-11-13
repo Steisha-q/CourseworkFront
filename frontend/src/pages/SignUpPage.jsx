@@ -1,6 +1,6 @@
-import { AuthForm } from "../app/auth/signUp";
+import { SignUp } from "../app/auth/signUp";
 export const SignUpPage = () => {
   return (
-        <AuthForm />
+        <SignUp />
     );
 }

@@ -1,49 +1,87 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './EditProfilePage.css';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { LoaderOverlay } from "@modules/core";
+import "./EditProfilePage.css";
+import { useAuth, useRequest } from "../../hooks";
+import { api } from "../../app/api";
 
 export const EditProfilePage = () => {
   const navigate = useNavigate();
+  const { user, updateUser } = useAuth();
+
+  const { makeRequest, isLoading } = useRequest({
+    api: api.updateUser,
+  });
+
   const [formData, setFormData] = useState({
-    username: 'Nickname',
-    bio: 'About me',
-    avatar: '',
-    preferences: {
+    username: user.username || "",
+    bio: user.bio || "",
+    avatar: "",
+    preferences: JSON.parse(user.preferences || "{}") || {
       ecoNews: true,
       fashion: false,
       diy: true,
       upcycling: true,
-      communityEvents: false
-    }
+      communityEvents: false,
+    },
   });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handlePreferenceChange = (preference) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       preferences: {
         ...prev.preferences,
-        [preference]: !prev.preferences[preference]
-      }
+        [preference]: !prev.preferences[preference],
+      },
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Тут буде логіка збереження даних
-    console.log('Profile updated:', formData);
-    navigate(-1);  
+
+    const updatedData = {
+      ...user,
+      username: formData.username,
+      bio: formData.bio,
+      preferences: JSON.stringify(formData.preferences),
+      avatar_url: formData.avatar,
+    };
+
+    const data = await makeRequest(updatedData);
+    if (!data) return;
+
+    updateUser(data);
+    navigate(-1);
   };
 
   const handleCancel = () => {
-    navigate(-1);  
+    navigate(-1);
+  };
+
+  const handleUploadShow = (e) => {
+    document.getElementById("imageUpload").click();
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setFormData((prev) => ({
+          ...prev,
+          avatar: reader.result,
+        }));
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   return (
@@ -58,16 +96,31 @@ export const EditProfilePage = () => {
           <label className="section-label">Avatar</label>
           <div className="avatar-upload">
             <div className="avatar-preview">
-              <div className="avatar-placeholder">👤</div>
+              {formData.avatar ? (
+                <img src={formData.avatar || '/default-avatar.png'} alt="Avatar Preview" className="avatar-placeholder" />
+              ) : (<div className="avatar-placeholder">👤</div>)}
             </div>
-            <button type="button" className="upload-btn">
+            <input
+              type="file"
+              id="imageUpload"
+              accept="image/*"
+              style={{ display: "none" }}
+              onChange={handleImageChange}
+            />
+            <button
+              type="button"
+              className="upload-btn"
+              onClick={handleUploadShow}
+            >
               Change Avatar
             </button>
           </div>
         </div>
- 
+
         <div className="form-section">
-          <label htmlFor="username" className="section-label">Username</label>
+          <label htmlFor="username" className="section-label">
+            Username
+          </label>
           <input
             type="text"
             id="username"
@@ -78,9 +131,11 @@ export const EditProfilePage = () => {
             placeholder="Enter your username"
           />
         </div>
- 
+
         <div className="form-section">
-          <label htmlFor="bio" className="section-label">Bio</label>
+          <label htmlFor="bio" className="section-label">
+            Bio
+          </label>
           <textarea
             id="bio"
             name="bio"
@@ -100,49 +155,49 @@ export const EditProfilePage = () => {
               <input
                 type="checkbox"
                 checked={formData.preferences.ecoNews}
-                onChange={() => handlePreferenceChange('ecoNews')}
+                onChange={() => handlePreferenceChange("ecoNews")}
               />
               <span>Eco News</span>
             </label>
-            
+
             <label className="preference-item">
               <input
                 type="checkbox"
                 checked={formData.preferences.fashion}
-                onChange={() => handlePreferenceChange('fashion')}
+                onChange={() => handlePreferenceChange("fashion")}
               />
               <span>Sustainable Fashion</span>
             </label>
-            
+
             <label className="preference-item">
               <input
                 type="checkbox"
                 checked={formData.preferences.diy}
-                onChange={() => handlePreferenceChange('diy')}
+                onChange={() => handlePreferenceChange("diy")}
               />
               <span>DIY Projects</span>
             </label>
-            
+
             <label className="preference-item">
               <input
                 type="checkbox"
                 checked={formData.preferences.upcycling}
-                onChange={() => handlePreferenceChange('upcycling')}
+                onChange={() => handlePreferenceChange("upcycling")}
               />
               <span>Upcycling Ideas</span>
             </label>
-            
+
             <label className="preference-item">
               <input
                 type="checkbox"
                 checked={formData.preferences.communityEvents}
-                onChange={() => handlePreferenceChange('communityEvents')}
+                onChange={() => handlePreferenceChange("communityEvents")}
               />
               <span>Community Events</span>
             </label>
           </div>
         </div>
- 
+
         <div className="form-actions">
           <button type="button" onClick={handleCancel} className="cancel-btn">
             Cancel
@@ -152,6 +207,8 @@ export const EditProfilePage = () => {
           </button>
         </div>
       </form>
+
+      <LoaderOverlay isLoading={isLoading} />
     </div>
   );
 };

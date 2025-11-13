@@ -1,8 +1,8 @@
 import React from "react";
-import { AuthForm } from "../app/auth/auth.form";
+import { Login } from "../app/auth/Login";
 
 export const SignInPage = () => {
   return (
-      <AuthForm />
+      <Login />
   );
 };

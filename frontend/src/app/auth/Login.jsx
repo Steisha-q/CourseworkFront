@@ -1,21 +1,23 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
 import "./auth.form.css";
 import { AuthHeader } from "./auth.header";
 import { useRequest, useAuth } from "@hooks";
 import { api } from "../api";
+import { ROUTES } from "../constants";
+import { LoaderOverlay, ErrorArea } from "@modules/core";
 
-export const AuthForm = ({ isLogin = false }) => {
-  const { makeRequest } = useRequest({
+export const Login = ({ isLogin = false }) => {
+  const navigate = useNavigate();
+  const { makeRequest, isLoading, error } = useRequest({
     api: api.login
   });
 
   const { login } = useAuth();
 
   const [formData, setFormData] = useState({
-    name: "",
     email: "",
-    password: "",
-    password_confirm: "",
+    password: ""
   });
 
   const handleChange = (e) => {
@@ -25,8 +27,13 @@ export const AuthForm = ({ isLogin = false }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = await makeRequest(formData);
+    if (!data) return;
     login(data.access_token, data.role);
   };
+
+  const handleGoRegister = () => {
+    navigate(ROUTES.signUp());
+  }
 
   return (
     <div className="auth-form-wrapper">
@@ -34,15 +41,6 @@ export const AuthForm = ({ isLogin = false }) => {
       {/* <h2 className="auth-title">{isLogin ? "Sign in to account" : "Create an account"}</h2> */}
       <h2 className="auth-title">{"Sign in to account"}</h2>
       <form className="auth-form" onSubmit={handleSubmit}>
-        {!isLogin && (
-          <input
-            type="text"
-            name="name"
-            placeholder="Name"
-            value={formData.name}
-            onChange={handleChange}
-          />
-        )}
         <input
           type="email"
           name="email"
@@ -59,21 +57,12 @@ export const AuthForm = ({ isLogin = false }) => {
           onChange={handleChange}
           required
         />
-        {!isLogin && (
-          <input
-            type="password"
-            name="password_confirm"
-            placeholder="Confirm Password"
-            value={formData.password_confirm}
-            onChange={handleChange}
-          />
-        )}
 
         <div className="auth-buttons">
           {!isLogin ? (
             <>
-              <button type="button" className="register-btn">Register</button>
-              <button type="submit" className="signin-btn">Sign in</button>
+              <button type="button" className="button" onClick={handleGoRegister}>Go to Register</button>
+              <button type="submit" className="button active-btn">Sign in</button>
             </>
           ) : (
             <button type="submit" className="signin-btn" style={{flex: '1'}}>Sign in</button>
@@ -84,6 +73,8 @@ export const AuthForm = ({ isLogin = false }) => {
           By registering your details, you agree with our Terms & Conditions,
           and Privacy and Cookies Policy.
         </p>
+        <LoaderOverlay show={isLoading} />
+        <ErrorArea message={error && "Wrong email or password"} />
       </form>
     </div>
   );

@@ -13,8 +13,11 @@ api.interceptors.request.use(
     const token = localStorage.getItem("token");
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
-    } else if (config.url !== ROUTES.signIn() && config.url !== ROUTES.signUp()) {
-        // window.location.href = ROUTES.signIn();
+    } else if (
+      config.url !== ROUTES.signIn() &&
+      config.url !== ROUTES.signUp()
+    ) {
+      // window.location.href = ROUTES.signIn();
     }
     return config;
   },
@@ -25,14 +28,15 @@ api.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response && error.response.status === 401) {
+      const url = error.config?.url;
 
       // ---- LOGOUT LOGIC ----
       localStorage.removeItem("token"); // Clear token
-
-      // Redirect to login (React Router)
-      window.location.href = ROUTES.signIn();
-      // -----------------------
-
+      if (url !== ROUTES.signIn() && url !== ROUTES.signUp()) {
+        // Redirect to login (React Router)
+        window.location.href = ROUTES.signIn();
+        // -----------------------
+      }
     }
 
     return Promise.reject(error);

@@ -43,8 +43,7 @@
   margin-top: 10px;
 }
 
-.register-btn,
-.signin-btn {
+.button {
   flex: 1;
   padding: 12px;
   font-size: 15px;
@@ -52,19 +51,16 @@
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.2s ease;
-}
-
-.register-btn {
   background-color: #f1f1f1;
   color: #333;
 }
 
-.signin-btn {
+.active-btn {
   background-color: #628b50;
   color: #fff;
 }
 
-.signin-btn:hover {
+.active-btn:hover {
   background-color: #4f7240;
 }
 

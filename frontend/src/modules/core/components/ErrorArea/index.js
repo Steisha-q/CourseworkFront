@@ -1,0 +1,1 @@
+export { ErrorArea } from './ErrorArea';
