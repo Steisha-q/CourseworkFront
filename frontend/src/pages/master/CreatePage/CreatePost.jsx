@@ -1,7 +1,16 @@
 import React, { useState } from 'react'
 import styles from "../MasterPostPage/styles.module.css";
+import { useRequest } from '../../../hooks';
+import { api } from '../../../app/api';
+import { LoaderOverlay } from "@modules/core";
+import { useNavigate } from 'react-router';
+import { ROUTES } from '../../../app/constants';
 
 export const CreatePost = () => {
+    const navigate = useNavigate();
+    const { makeRequest, isLoading } = useRequest({
+    api: api.createPost
+    });
   const [editingPost, setEditingPost] = useState(null);
   const [newTag, setNewTag] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
@@ -17,6 +26,7 @@ export const CreatePost = () => {
   });
 
   const communities = [
+    { id: null, name: "Personal Post" },
     { id: 1, name: "Woodworking Masters" },
     { id: 2, name: "Ceramic Artists" },
     { id: 3, name: "Metal Crafts" },
@@ -34,10 +44,14 @@ export const CreatePost = () => {
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
       setPostForm((prev) => ({
         ...prev,
-        image: URL.createObjectURL(file),
+        image: reader.result,
       }));
+    }
+      reader.readAsDataURL(file);
     }
   };
 
@@ -72,16 +86,21 @@ export const CreatePost = () => {
     }
   };
 
-  const handleCreatePost = (e) => {
+  const handleCreatePost = async (e) => {
     e.preventDefault();
     const newPost = {
-      id: Date.now(),
-      ...postForm,
-      createdAt: new Date().toISOString().split("T")[0],
+      title: postForm.title,
+      content: postForm.content,
+      image_url: postForm.image,
+    //   status: postForm.status,
+      tag: postForm.tags?.join(", ") || "",
     };
-
-    setPosts((prev) => [newPost, ...prev]);
-    resetForm();
+    const data = await makeRequest(newPost);
+    if (!data) return;
+    navigate(ROUTES.masterpost());
+    // setPosts((prev) => [newPost, ...prev]);
+    // resetForm();
+    na
   };
 
   const handleUpdatePost = (e) => {
@@ -112,6 +131,10 @@ export const CreatePost = () => {
     setNewTag("");
   };
 
+  const handleFileUnpoadStart = () => {
+    document.getElementById("imageUpload").click();
+
+  }
 
   return (
     <div className={styles.postPage}>
@@ -179,11 +202,12 @@ export const CreatePost = () => {
               {!postForm.image ? (
                 <div className={styles.imageUpload}>
                   <input
+                    id="imageUpload"
                     type="file"
                     accept="image/*"
                     onChange={handleImageUpload}
                   />
-                  <label className={styles.uploadLabel}>
+                  <label className={styles.uploadLabel} onClick={handleFileUnpoadStart}>
                     <span className={styles.uploadIcon}>📷</span>
                     Click to upload image
                   </label>
@@ -195,13 +219,15 @@ export const CreatePost = () => {
                     alt="Preview"
                     className={styles.previewImage}
                   />
-                  <button
-                    type="button"
-                    className={styles.removeImage}
-                    onClick={handleRemoveImage}
-                  >
-                    Remove Image
-                  </button>
+                  <p>
+                    <button
+                        type="button"
+                        className={styles.removeImage}
+                        onClick={handleRemoveImage}
+                    >
+                        Remove Image
+                    </button>
+                  </p>
                 </div>
               )}
             </div>
@@ -296,6 +322,7 @@ export const CreatePost = () => {
         </div>
 
       </div>
+      <LoaderOverlay isLoading={isLoading} />
     </div>
   );
 };

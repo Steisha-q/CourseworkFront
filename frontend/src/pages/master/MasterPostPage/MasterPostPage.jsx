@@ -1,12 +1,16 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import styles from "./styles.module.css";
+import { useRequest } from "../../../hooks";
+import { api } from "../../../app/api";
 
 export const MasterPostPage = () => {
+  const { makeRequest } = useRequest({
+    api: api.getPosts,
+  });
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [postToDelete, setPostToDelete] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedTags, setSelectedTags] = useState([]);
-
   const [posts, setPosts] = useState([
     {
       id: 1,
@@ -54,11 +58,25 @@ export const MasterPostPage = () => {
     },
   ]);
 
+  useEffect(() => {
+    handleFetchPosts();
+  }, []);
+
+  const handleFetchPosts = async () => {
+    const data = await makeRequest();
+    if (!data) return;
+    setPosts((prev) => [...prev, ...(data || [])]);
+  };
+
   const allTags = useMemo(() => {
     const tags = new Set();
-    posts.forEach((post) => {
-      post.tags.forEach((tag) => tags.add(tag));
-    });
+    try {
+      posts.forEach((post) => {
+        post.tags.forEach((tag) => tags.add(tag));
+      });
+    } catch (error) {
+      console.error("Error extracting tags:", error);
+    }
     return Array.from(tags).sort();
   }, [posts]);
 
@@ -76,7 +94,6 @@ export const MasterPostPage = () => {
       return matchesSearch && matchesTags;
     });
   }, [posts, searchTerm, selectedTags]);
-
 
   const handleDeletePost = (postId) => {
     setPosts((prev) => prev.filter((post) => post.id !== postId));
@@ -134,7 +151,6 @@ export const MasterPostPage = () => {
       <h1 className={styles.pageTitle}>Posts</h1>
 
       <div className={styles.postContainer}>
-
         <div className={styles.postsSection}>
           <div className={styles.searchFilters}>
             <div className={styles.searchGroup}>
@@ -153,7 +169,7 @@ export const MasterPostPage = () => {
             <div className={styles.tagsFilter}>
               <p className={styles.filterTitle}>Filter by tags:</p>
               <div className={styles.tagsList}>
-                {allTags.map((tag) => (
+                {allTags?.map((tag) => (
                   <span
                     key={tag}
                     className={`${styles.tagFilter} ${
@@ -175,7 +191,7 @@ export const MasterPostPage = () => {
             </div>
           </div>
 
-          {filteredPosts.length === 0 ? (
+          {filteredPosts?.length === 0 ? (
             <div className={styles.noResults}>
               <p>No posts found</p>
             </div>
@@ -207,7 +223,7 @@ export const MasterPostPage = () => {
                     />
                   )}
 
-                  {post.tags.length > 0 && (
+                  {post.tags?.length > 0 && (
                     <div className={styles.postTags}>
                       {post.tags.map((tag) => (
                         <span key={tag} className={styles.postTag}>

@@ -26,5 +26,6 @@ export const api = {
     // posts
     createPost: (data) => axios.post(endpoints.posts(), data),
     getPost: (id) => axios.get(endpoints.post(id)),
+    getPosts: () => axios.get(endpoints.posts()),
     getPostsByUser: (userId) => axios.get(endpoints.postsByUser(userId)),
 };
