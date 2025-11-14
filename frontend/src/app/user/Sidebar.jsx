@@ -20,7 +20,7 @@ export const Sidebar = () => {
         </Link>
         <a href="#" className="nav-item">Search</a>
         {/* <a href="#" className="nav-item">Message</a> */}
-        <Link to={ROUTES.post()} className={isActive(ROUTES.post())}>
+        <Link to="/createcommunity" className={isActive('/createcommunity')}>
           Create
         </Link>
         <Link to="/profile" className={isActive('/profile')}>
