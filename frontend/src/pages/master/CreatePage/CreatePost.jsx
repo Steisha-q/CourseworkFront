@@ -115,8 +115,6 @@ export const CreatePost = () => {
 
   return (
     <div className={styles.postPage}>
-      <h1 className={styles.pageTitle}>Posts</h1>
-
       <div className={styles.postContainer}>
         <div className={styles.formSection}>
           <h2 className={styles.formTitle}>

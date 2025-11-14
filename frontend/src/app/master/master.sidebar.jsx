@@ -13,11 +13,11 @@ import {
 } from "react-icons/fa";
 
 const menuItems = [
+  { icon: FaClipboardList, label: "Feed", route: ROUTES.masterpost() },
+  { icon: FaPlusCircle, label: "Create", route: ROUTES.create() },
   { icon: FaUser, label: "Profile", route: ROUTES.mprofile() },
   { icon: FaSearch, label: "Search", route: ROUTES.search() },
-  { icon: FaPlusCircle, label: "Create", route: ROUTES.create() },
   { icon: FaFire, label: "Community", route: ROUTES.community() },
-  { icon: FaClipboardList, label: "Posts", route: ROUTES.masterpost() },
 ];
 
 const MasterSidebar = () => {

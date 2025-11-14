@@ -23,8 +23,6 @@ const AuthProvider = ({ children }) => {
         setAccessToken(accessToken);
         handleUserFetch();
         localStorage.setItem("token", accessToken)
-
-        navigate(ROUTES.home());
     }
 
     const logout = () => {
@@ -32,7 +30,6 @@ const AuthProvider = ({ children }) => {
 
         localStorage.removeItem("user")
         localStorage.removeItem("token")
-
         navigate(ROUTES.signIn());
     }
 
@@ -48,6 +45,16 @@ const AuthProvider = ({ children }) => {
         if (!data) return;
         setUser(data);
         localStorage.setItem("user", JSON.stringify(data))
+
+        if (data.role === "master") {
+            navigate(ROUTES.masterpost());
+        } else if (data.role === "user") {
+            navigate(ROUTES.posts());
+        } else if (data.role === "manager") {
+            navigate(ROUTES.managerDashboard());
+        } else {
+            navigate(ROUTES.home());
+        }
     }
 
     return <authContext.Provider value={{
