@@ -1,10 +1,8 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState } from 'react'
 import styles from "../MasterPostPage/styles.module.css";
 
 export const CreatePost = () => {
   const [editingPost, setEditingPost] = useState(null);
-  const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [postToDelete, setPostToDelete] = useState(null);
   const [newTag, setNewTag] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedTags, setSelectedTags] = useState([]);
@@ -24,76 +22,6 @@ export const CreatePost = () => {
     { id: 3, name: "Metal Crafts" },
     { id: 4, name: "Leather Workers" },
   ];
-
-  const [posts, setPosts] = useState([
-    {
-      id: 1,
-      title: "New Woodworking Technique",
-      community: "Woodworking Masters",
-      content:
-        "Just discovered an amazing new technique for finishing wooden surfaces. It creates a beautiful matte finish that really brings out the natural grain of the wood.",
-      image: "/api/placeholder/400/200",
-      tags: ["woodworking", "technique", "finishing"],
-      status: "regular",
-      createdAt: "2024-01-15",
-    },
-    {
-      id: 2,
-      title: "Looking for Ceramic Glazing Expert",
-      community: "Ceramic Artists",
-      content:
-        "I need help with a complex glazing project. Looking for someone experienced with crystalline glazes for a special art piece.",
-      image: null,
-      tags: ["help", "glazing", "expert"],
-      status: "need_master",
-      createdAt: "2024-01-14",
-    },
-    {
-      id: 3,
-      title: "Metal Welding Workshop",
-      community: "Metal Crafts",
-      content:
-        "Organizing a welding workshop next weekend. All skill levels welcome! We will cover basic techniques and safety.",
-      image: "/api/placeholder/400/200",
-      tags: ["workshop", "welding", "metal"],
-      status: "regular",
-      createdAt: "2024-01-13",
-    },
-    {
-      id: 4,
-      title: "Need Help with Leather Tooling",
-      community: "Leather Workers",
-      content:
-        "Struggling with complex leather tooling patterns. Anyone experienced willing to help me learn advanced techniques?",
-      image: null,
-      tags: ["help", "leather", "tooling", "beginner"],
-      status: "need_master",
-      createdAt: "2024-01-12",
-    },
-  ]);
-
-  const allTags = useMemo(() => {
-    const tags = new Set();
-    posts.forEach((post) => {
-      post.tags.forEach((tag) => tags.add(tag));
-    });
-    return Array.from(tags).sort();
-  }, [posts]);
-
-  const filteredPosts = useMemo(() => {
-    return posts.filter((post) => {
-      const matchesSearch =
-        searchTerm === "" ||
-        post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        post.content.toLowerCase().includes(searchTerm.toLowerCase());
-
-      const matchesTags =
-        selectedTags.length === 0 ||
-        selectedTags.every((tag) => post.tags.includes(tag));
-
-      return matchesSearch && matchesTags;
-    });
-  }, [posts, searchTerm, selectedTags]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -167,29 +95,6 @@ export const CreatePost = () => {
     resetForm();
   };
 
-  const handleDeletePost = (postId) => {
-    setPosts((prev) => prev.filter((post) => post.id !== postId));
-    setShowDeleteModal(false);
-    setPostToDelete(null);
-  };
-
-  const handleEditPost = (post) => {
-    setEditingPost(post);
-    setPostForm({
-      title: post.title,
-      community: post.community,
-      content: post.content,
-      image: post.image,
-      tags: [...post.tags],
-      status: post.status,
-    });
-  };
-
-  const openDeleteModal = (post) => {
-    setPostToDelete(post);
-    setShowDeleteModal(true);
-  };
-
   const cancelEdit = () => {
     setEditingPost(null);
     resetForm();
@@ -207,16 +112,6 @@ export const CreatePost = () => {
     setNewTag("");
   };
 
-  const handleTagFilter = (tag) => {
-    setSelectedTags((prev) =>
-      prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
-    );
-  };
-
-  const clearSearch = () => {
-    setSearchTerm("");
-    setSelectedTags([]);
-  };
 
   return (
     <div className={styles.postPage}>

@@ -2,28 +2,10 @@ import { useState, useMemo } from "react";
 import styles from "./styles.module.css";
 
 export const MasterPostPage = () => {
-  const [editingPost, setEditingPost] = useState(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [postToDelete, setPostToDelete] = useState(null);
-  const [newTag, setNewTag] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedTags, setSelectedTags] = useState([]);
-
-  const [postForm, setPostForm] = useState({
-    title: "",
-    community: "",
-    content: "",
-    image: null,
-    tags: [],
-    status: "regular",
-  });
-
-  const communities = [
-    { id: 1, name: "Woodworking Masters" },
-    { id: 2, name: "Ceramic Artists" },
-    { id: 3, name: "Metal Crafts" },
-    { id: 4, name: "Leather Workers" },
-  ];
 
   const [posts, setPosts] = useState([
     {
@@ -95,77 +77,6 @@ export const MasterPostPage = () => {
     });
   }, [posts, searchTerm, selectedTags]);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setPostForm((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleImageUpload = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setPostForm((prev) => ({
-        ...prev,
-        image: URL.createObjectURL(file),
-      }));
-    }
-  };
-
-  const handleRemoveImage = () => {
-    setPostForm((prev) => ({
-      ...prev,
-      image: null,
-    }));
-  };
-
-  const handleAddTag = () => {
-    if (newTag.trim() && !postForm.tags.includes(newTag.trim())) {
-      setPostForm((prev) => ({
-        ...prev,
-        tags: [...prev.tags, newTag.trim()],
-      }));
-      setNewTag("");
-    }
-  };
-
-  const handleRemoveTag = (tagToRemove) => {
-    setPostForm((prev) => ({
-      ...prev,
-      tags: prev.tags.filter((tag) => tag !== tagToRemove),
-    }));
-  };
-
-  const handleTagKeyPress = (e) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      handleAddTag();
-    }
-  };
-
-  const handleCreatePost = (e) => {
-    e.preventDefault();
-    const newPost = {
-      id: Date.now(),
-      ...postForm,
-      createdAt: new Date().toISOString().split("T")[0],
-    };
-
-    setPosts((prev) => [newPost, ...prev]);
-    resetForm();
-  };
-
-  const handleUpdatePost = (e) => {
-    e.preventDefault();
-    setPosts((prev) =>
-      prev.map((post) =>
-        post.id === editingPost.id ? { ...post, ...postForm } : post
-      )
-    );
-    setEditingPost(null);
-    resetForm();
-  };
 
   const handleDeletePost = (postId) => {
     setPosts((prev) => prev.filter((post) => post.id !== postId));
