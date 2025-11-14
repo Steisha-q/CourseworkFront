@@ -7,7 +7,7 @@ const endpoints = {
     // users
     users: () => "/users",
     users: id => `/users/${id}`,
-    getCurrentUser: () => `/users/me`,
+    getCurrentUser: () => `/users/me/token`,
 
     // posts
     posts: () => "/posts",

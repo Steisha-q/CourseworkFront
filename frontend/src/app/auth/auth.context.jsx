@@ -45,9 +45,8 @@ const AuthProvider = ({ children }) => {
         if (!data) return;
         setUser(data);
         localStorage.setItem("user", JSON.stringify(data))
-
         if (data.role === "master") {
-            navigate(ROUTES.masterpost());
+            navigate(ROUTES.mprofile());
         } else if (data.role === "user") {
             navigate(ROUTES.posts());
         } else if (data.role === "manager") {

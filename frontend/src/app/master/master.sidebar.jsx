@@ -11,6 +11,7 @@ import {
   FaClipboardList,
   FaSignOutAlt,
 } from "react-icons/fa";
+import { useAuth } from "../../hooks";
 
 const menuItems = [
   { icon: FaClipboardList, label: "Feed", route: ROUTES.masterpost() },
@@ -22,6 +23,7 @@ const menuItems = [
 
 const MasterSidebar = () => {
   const location = useLocation();
+  const { logout } = useAuth();
 
   const isActiveRoute = (route) => {
     return location.pathname === route;
@@ -54,7 +56,7 @@ const MasterSidebar = () => {
         </nav>
       </div>
 
-      <div className="sidebar-logout-section">
+      <div className="sidebar-logout-section" onClick={logout}>
         <a href="/signIn" className="sidebar-logout-link">
           <FaSignOutAlt className="sidebar-icon" />
           Logout
