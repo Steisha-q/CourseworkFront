@@ -1,28 +1,21 @@
 import React from "react";
 import styles from "./styles.module.css";
-import { useNavigate } from "react-router";
-import { useAuth } from "../../../hooks";
 
-export const ProfileHeader = () => {
-  const navigate = useNavigate();
-  const { user } = useAuth();
+export const ProfileHeader = ({ masterInfo, onEditProfile }) => {
   const stats = {
     products: 100,
     followers: "1.2k",
     signed: 51,
   };
-  const handleEditProfile = () => {
-    console.log("Edit profile clicked");
-    // navigate("/user/editprofile");
-  };
+
   return (
     <div className={styles.profileHeader}>
       <div className={styles.profileMain}>
-        {user.avatar_url ? (
+        {masterInfo.avatar_url ? (
           <img
-            src={user.avatar_url || "/default-avatar.png"}
-            alt="Avatar Preview"
-            className="avatar-placeholder"
+            src={masterInfo.avatar_url}
+            alt="Avatar"
+            className={styles.avatarImage}
           />
         ) : (
           <div className={styles.profileAvatar}>
@@ -32,11 +25,8 @@ export const ProfileHeader = () => {
 
         <div className={styles.profileContent}>
           <div className={styles.profileTop}>
-            <h1 className={styles.profileName}>{user.username}</h1>
-            <button
-              className={styles.editProfileBtn}
-              onClick={handleEditProfile}
-            >
+            <h1 className={styles.profileName}>{masterInfo.username}</h1>
+            <button className={styles.editProfileBtn} onClick={onEditProfile}>
               Edit profile
             </button>
           </div>
@@ -57,7 +47,7 @@ export const ProfileHeader = () => {
           </div>
 
           <div className={styles.profileBio}>
-            <p>{user.bio || "No bio"}</p>
+            <p>{masterInfo.bio || "No bio"}</p>
           </div>
         </div>
       </div>
