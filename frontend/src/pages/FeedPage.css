@@ -1,0 +1,321 @@
+/* FeedPage.css */
+.feed-page {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.page-layout {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.main-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* Великий проміжок між формою і постами */
+}
+
+/* ФОРМА СТВОРЕННЯ ПОСТА - ФІКСОВАНА ПОЗИЦІЯ */
+.create-post-wrapper {
+  width: 100%;
+  position: relative;
+  z-index: 10;
+}
+
+.create-post-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  border: 2px solid #e0e0e0;
+  margin-bottom: 0;
+}
+
+.post-input-container {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.user-avatar {
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e9ecef;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.post-textarea {
+  flex: 1;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 14px;
+  resize: vertical;
+  min-height: 80px;
+  font-family: inherit;
+  line-height: 1.5;
+}
+
+.post-textarea:focus {
+  outline: none;
+  border-color: #4caf50;
+}
+
+/* Image Upload */
+.image-upload-section {
+  margin: 15px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.add-photo-btn {
+  background: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+}
+
+.add-photo-btn:hover {
+  background: #f0f9f0;
+  border-color: #4caf50;
+}
+
+.selected-image-preview {
+  margin: 10px 0;
+}
+
+.image-preview {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #4caf50;
+}
+
+.remove-image-btn {
+  position: absolute;
+  margin-left: -25px;
+  margin-top: -10px;
+  background: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-image-btn:hover {
+  background: #cc0000;
+}
+
+/* Кнопка публікації */
+.post-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
+}
+
+.publish-btn {
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.publish-btn:hover:not(:disabled) {
+  background: #45a049;
+  transform: translateY(-1px);
+}
+
+.publish-btn:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* СТРІЧКА ПОСТІВ - ОКРЕМИЙ БЛОК */
+.posts-feed-wrapper {
+  width: 100%;
+  margin-top: 0;
+}
+
+.posts-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* СТИЛІ ДЛЯ ПОСТІВ */
+.post-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  border: 1px solid #e0e0e0;
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.user-info {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.user-details h4 {
+  margin: 0;
+  font-size: 16px;
+  color: #333;
+  font-weight: 600;
+}
+
+.user-role {
+  font-size: 12px;
+  color: #666;
+}
+
+.post-date {
+  font-size: 12px;
+  color: #999;
+}
+
+.post-content {
+  margin-bottom: 15px;
+}
+
+.post-content p {
+  margin: 0 0 15px 0;
+  line-height: 1.5;
+  color: #333;
+  font-size: 14px;
+}
+
+/* ФОТО В ПОСТІ */
+.post-image-container {
+  margin: 15px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #e0e0e0;
+  background: #f8f9fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.post-image {
+  max-width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Tags */
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 15px 0;
+}
+
+.tag {
+  background: #e8f5e8;
+  color: #2e7d32;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Stats */
+.post-stats {
+  display: flex;
+  gap: 20px;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 15px;
+  margin-top: 10px;
+}
+
+.stat-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #666;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.stat-btn:hover {
+  background: #f5f5f5;
+  color: #4caf50;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .page-layout {
+    padding: 15px;
+    max-width: 100%;
+  }
+  
+  .post-image {
+    max-height: 300px;
+  }
+  
+  .main-content {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .create-post-card,
+  .post-card {
+    padding: 15px;
+  }
+  
+  .post-image {
+    max-height: 250px;
+  }
+  
+  .post-input-container {
+    flex-direction: column;
+  }
+  
+  .user-avatar {
+    align-self: flex-start;
+  }
+}
