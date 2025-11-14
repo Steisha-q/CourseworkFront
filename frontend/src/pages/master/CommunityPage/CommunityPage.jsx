@@ -60,7 +60,8 @@ export const CommunityPage = () => {
         author: "John Carpenter",
         content:
           "Just discovered an amazing new technique for finishing wooden surfaces. It creates a beautiful matte finish that really brings out the natural grain of the wood. The process involves using a special oil mixture that penetrates deep into the wood fibers.",
-        image: "/api/placeholder/600/300",
+        image:
+          "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=300&fit=crop",
         tags: ["technique", "finishing", "oak"],
         status: "regular",
         date: "2024-01-15",
@@ -82,7 +83,8 @@ export const CommunityPage = () => {
         author: "Mike Peterson",
         content:
           "Organizing a woodturning workshop next month. We'll cover basic spindle turning and bowl making. All skill levels welcome!",
-        image: "/api/placeholder/600/300",
+        image:
+          "https://images.unsplash.com/photo-1491147334573-44cbb4602074?w=600&h=300&fit=crop",
         tags: ["workshop", "woodturning", "event"],
         status: "regular",
         date: "2024-01-13",
@@ -95,7 +97,8 @@ export const CommunityPage = () => {
         author: "Emma Rodriguez",
         content:
           "After months of experimentation, finally achieved perfect crystalline glazes! The crystals formed beautifully during the firing process.",
-        image: "/api/placeholder/600/300",
+        image:
+          "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=600&h=300&fit=crop",
         tags: ["glazing", "crystals", "success"],
         status: "regular",
         date: "2024-01-15",
@@ -119,7 +122,6 @@ export const CommunityPage = () => {
         author: "Robert Black",
         content:
           "Working on a custom Damascus steel sword. The pattern welding is coming along nicely. Will share progress photos soon.",
-        image: "/api/placeholder/600/300",
         tags: ["damascus", "sword", "forging"],
         status: "regular",
         date: "2024-01-15",
@@ -132,7 +134,8 @@ export const CommunityPage = () => {
         author: "Lisa Chen",
         content:
           "Created a new series of floral tooling patterns for leather wallets. The depth and detail came out perfectly.",
-        image: "/api/placeholder/600/300",
+        image:
+          "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&h=300&fit=crop",
         tags: ["tooling", "patterns", "wallet"],
         status: "regular",
         date: "2024-01-15",
@@ -145,7 +148,8 @@ export const CommunityPage = () => {
         author: "Thomas Wright",
         content:
           "Restoring a 19th century stained glass window. The lead came replacement is quite challenging but rewarding.",
-        image: "/api/placeholder/600/300",
+        image:
+          "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=600&h=300&fit=crop",
         tags: ["stained-glass", "restoration", "historic"],
         status: "regular",
         date: "2024-01-15",

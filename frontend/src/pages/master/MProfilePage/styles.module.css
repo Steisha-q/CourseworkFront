@@ -538,3 +538,178 @@
         width: 100%;
     }
 }
+
+/* Стилі для постів */
+.postsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.postCard {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.postCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.postImageContainer {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.postImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.postCard:hover .postImage {
+    transform: scale(1.05);
+}
+
+.postPlaceholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8f8f8;
+    color: #666;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.postInfo {
+    padding: 20px;
+}
+
+.postTitle {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 12px 0;
+    color: #000000;
+}
+
+.postContent {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #666;
+    margin: 0 0 15px 0;
+}
+
+.postMeta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: #999;
+}
+
+.postDate {
+    font-weight: 500;
+}
+
+.postStats {
+    display: flex;
+    gap: 15px;
+}
+
+.postStat {
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.3s ease;
+}
+
+.postStat:hover {
+    color: #685A5A;
+}
+
+@media (max-width: 768px) {
+    .postsGrid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .postImageContainer {
+        height: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    .postsGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .postMeta {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+
+    .postStats {
+        align-self: flex-end;
+    }
+}
+
+/* Стилі для статистики товарів */
+.productStats {
+    display: flex;
+    gap: 15px;
+    margin: 12px 0;
+    padding: 10px 0;
+    border-top: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.productStat {
+    font-size: 14px;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Стилі для активного лайка */
+.postStatActive {
+    color: #685A5A;
+    font-weight: 600;
+}
+
+/* Стилі для селекту в модальному вікні */
+.formInput select {
+    appearance: none;
+    background: white;
+}
+
+/* Додаткові стилі для модального вікна редагування товару */
+.modalForm {
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+    .productStats {
+        justify-content: center;
+    }
+
+    .modalForm {
+        max-height: 60vh;
+    }
+}
