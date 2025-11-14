@@ -13,7 +13,7 @@ export const HomePage = () => {
       },
       date: "09.08.2025",
       content: "Just finished upcycling this beautiful vintage sweater! What do you think about the new design?",
-      image: "https://images.unsplash.com/photo-1550614000-4895a10e1bfd?w=500&h=500&fit=crop",
+      // image: "https://images.unsplash.com/photo-1550614000-4895a10e1bfd?w=500&h=500&fit=crop",
       likes: 163,
       comments: 24,
       shares: 12,
@@ -60,8 +60,7 @@ export const HomePage = () => {
       shares: 0,
       tags: ["newpost"]
     };
-
-    // ЗМІНА: Додаємо новий пост в КІНЕЦЬ масиву
+ 
     setPosts([...posts, post]);
     setNewPost("");
     setSelectedImage(null);
@@ -84,7 +83,6 @@ export const HomePage = () => {
       
       <div className="page-layout">
         <main className="main-content">
-          {/* ФОРМА СТВОРЕННЯ ПОСТА - ЗВЕРХУ */}
           <div className="create-post-wrapper">
             <div className="create-post-card">
               <div className="post-input-container">
@@ -129,8 +127,7 @@ export const HomePage = () => {
               </div>
             </div>
           </div>
-
-          {/* СТРІЧКА ПОСТІВ - ПОСТИ ДОДАЮТЬСЯ В КІНЕЦЬ */}
+ 
           <div className="posts-feed-wrapper">
             <div className="posts-grid">
               {posts.map((post) => (
@@ -148,8 +145,7 @@ export const HomePage = () => {
                   
                   <div className="post-content">
                     <p>{post.content}</p>
-                    
-                    {/* ФОТО В ПОСТІ */}
+ 
                     {post.image && (
                       <div className="post-image-container">
                         <img 
