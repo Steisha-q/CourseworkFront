@@ -2,7 +2,7 @@ import axios from "axios";
 import { ROUTES } from "../constants";
 
 const api = axios.create({
-  baseURL: import.meta.env.BACKEND_URL || "http://localhost:5001",
+  baseURL: import.meta.env.BACKEND_URL || "https://revisory-alethia-unmotorised.ngrok-free.dev",
   timeout: 10000, // optional
 });
 
@@ -34,7 +34,7 @@ api.interceptors.response.use(
       localStorage.removeItem("token"); // Clear token
       if (url !== ROUTES.signIn() && url !== ROUTES.signUp()) {
         // Redirect to login (React Router)
-        window.location.href = ROUTES.signIn();
+        // window.location.href = ROUTES.signIn();
         // -----------------------
       }
     }

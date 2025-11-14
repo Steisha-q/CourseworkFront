@@ -1,9 +1,16 @@
 import { useState, useMemo } from "react";
 import styles from "./styles.module.css";
 import { ProfileHeader } from "./ProfileHeader";
+import { EditProfileModal } from "./EditProfileModal";
 
 export const MProfilePage = () => {
   const [activeTab, setActiveTab] = useState("products");
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [masterInfo, setMasterInfo] = useState({
+    username: "MasterDesigner",
+    bio: "Fashion designer with 5+ years of experience. Specializing in sustainable clothing and unique designs.",
+    avatar_url: null,
+  });
 
   const products = [
     {
@@ -76,9 +83,18 @@ export const MProfilePage = () => {
     console.log("Delete product:", productId);
   };
 
+  const handleUpdateProfile = (updatedInfo) => {
+    setMasterInfo(updatedInfo);
+    setIsEditModalOpen(false);
+  };
+
   return (
     <div className={styles.profilePage}>
-      <ProfileHeader />
+      <ProfileHeader
+        masterInfo={masterInfo}
+        onEditProfile={() => setIsEditModalOpen(true)}
+      />
+
       <div className={styles.profileNavigation}>
         <button
           className={`${styles.navBtn} ${
@@ -197,6 +213,13 @@ export const MProfilePage = () => {
           </div>
         )}
       </div>
+
+      <EditProfileModal
+        isOpen={isEditModalOpen}
+        onClose={() => setIsEditModalOpen(false)}
+        masterInfo={masterInfo}
+        onSave={handleUpdateProfile}
+      />
     </div>
   );
 };
