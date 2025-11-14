@@ -7,11 +7,10 @@ export const ProfileHeader = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
 
-  console.log("user data:", user);
-
   const handleEditProfile = () => {
     navigate("/user/editprofile");
   };
+  
   return (
     <div className="profile-header">
       <div className="profile-main">

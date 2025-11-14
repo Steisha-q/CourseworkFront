@@ -8,6 +8,11 @@ const endpoints = {
     users: () => "/users",
     users: id => `/users/${id}`,
     getCurrentUser: () => `/users/me`,
+
+    // posts
+    posts: () => "/posts",
+    post: id => `/posts/${id}`,
+    postsByUser: userId => `/posts/user/${userId}`,
 }
 
 export const api = {
@@ -17,4 +22,9 @@ export const api = {
     // users
     getCurrentUser: () => axios.get(endpoints.getCurrentUser()),
     updateUser: (data) => axios.patch(endpoints.users(data.user_id), data),
+
+    // posts
+    createPost: (data) => axios.post(endpoints.posts(), data),
+    getPost: (id) => axios.get(endpoints.post(id)),
+    getPostsByUser: (userId) => axios.get(endpoints.postsByUser(userId)),
 };

@@ -1,17 +1,45 @@
+import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./ProfilePage.css";
-import { useAuth } from "../../hooks";
+import { useAuth, useRequest } from "../../hooks";
 import { ProfileHeader } from "../../modules/users/components";
+import { api } from "../../app/api";
 
 export const ProfilePage = () => {
   const location = useLocation();
-  const navigate = useNavigate();
   const { user } = useAuth();
+  const navigate = useNavigate();
+  const { makeRequest } = useRequest({
+    api: api.getPostsByUser,
+  });
 
-  console.log("user data:", user);
+  const [posts, setPosts] = useState([]);
 
-  const handleEditProfile = () => {
-    navigate("/user/editprofile");
+  useEffect(() => {
+    handleFetchPosts();
+  }, []);
+
+  const handleFetchPosts = async () => {
+    const data = await makeRequest(user.user_id);
+    if (!data) return;
+    setPosts(data || []);
+  };
+
+  const renderPost = (post) => {
+    console.log('HERE', post);
+    
+    return (
+      <div key={post.post_id} className="post-item">
+        {post.image_url ? (
+          <img
+            src={post.image_url}
+            alt="Post"
+            className="post-image"
+          />
+        ) : null}
+        <span className="post-caption">{post.title}</span>
+      </div> 
+    );
   };
 
   return (
@@ -46,13 +74,7 @@ export const ProfilePage = () => {
       </div>
 
       <div className="posts-section">
-        <div className="posts-grid">
-          {[1, 2, 3, 4, 5, 6].map((post) => (
-            <div key={post} className="post-item">
-              Post {post}
-            </div>
-          ))}
-        </div>
+        <div className="posts-grid">{posts.map(renderPost)}</div>
       </div>
     </div>
   );

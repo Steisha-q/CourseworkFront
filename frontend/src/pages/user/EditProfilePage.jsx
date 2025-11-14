@@ -16,7 +16,7 @@ export const EditProfilePage = () => {
   const [formData, setFormData] = useState({
     username: user.username || "",
     bio: user.bio || "",
-    avatar: "",
+    avatar: user.avatar_url || "",
     preferences: JSON.parse(user.preferences || "{}") || {
       ecoNews: true,
       fashion: false,

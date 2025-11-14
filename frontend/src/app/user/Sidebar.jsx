@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import './Sidebar.css';
+import { ROUTES } from '../constants';
 
 export const Sidebar = () => {
   const location = useLocation();
@@ -19,7 +20,7 @@ export const Sidebar = () => {
         </Link>
         <a href="#" className="nav-item">Search</a>
         {/* <a href="#" className="nav-item">Message</a> */}
-        <Link to="/createcommunity" className={isActive('/createcommunity')}>
+        <Link to={ROUTES.post()} className={isActive(ROUTES.post())}>
           Create
         </Link>
         <Link to="/profile" className={isActive('/profile')}>
@@ -31,7 +32,9 @@ export const Sidebar = () => {
         <Link to="/user/preferences" className={isActive('/user/preferences')}>
           Tastes
         </Link>
-        <a href="#" className="nav-item">Posts</a>
+        <Link to={ROUTES.posts()} className={isActive(ROUTES.posts())}>
+          Posts
+        </Link>
       </nav>
       <button className="sidebar-logout-btn">Logout</button>
     </div>

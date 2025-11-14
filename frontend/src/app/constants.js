@@ -53,5 +53,7 @@ export const ROUTES = {
     
     prefer: () => '/user/preferences',
 
-    searchcommunity: () => '/user/searchcommunity'
+    searchcommunity: () => '/user/searchcommunity',
+
+    posts: () => '/posts',
 }
