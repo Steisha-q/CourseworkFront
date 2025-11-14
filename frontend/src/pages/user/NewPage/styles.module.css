@@ -1,0 +1,196 @@
+.profilePage {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #ffffff;
+    min-height: 100vh;
+}
+
+.searchSection {
+    margin-bottom: 30px;
+}
+
+.searchContainer {
+    position: relative;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 12px 45px 12px 16px;
+    border: 2px solid #f0f0f0;
+    border-radius: 25px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: #f8f8f8;
+}
+
+.searchInput:focus {
+    outline: none;
+    border-color: #685A5A;
+    background: white;
+}
+
+.searchIcon {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+}
+
+.contentSection {
+    padding: 20px 0;
+}
+
+.postsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.postCard {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.postCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.postImageContainer {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.postImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.postCard:hover .postImage {
+    transform: scale(1.05);
+}
+
+.postInfo {
+    padding: 20px;
+}
+
+.postTitle {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 12px 0;
+    color: #000000;
+    line-height: 1.3;
+}
+
+.postContent {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #666;
+    margin: 0 0 15px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.postMeta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: #999;
+}
+
+.postDate {
+    font-weight: 500;
+}
+
+.likeButton {
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+    padding: 6px 12px;
+    border-radius: 20px;
+}
+
+.likeButton:hover {
+    background: #f8f8f8;
+}
+
+.likeButton.liked {
+    color: #685A5A;
+    font-weight: 600;
+}
+
+.emptyState {
+    text-align: center;
+    padding: 80px 20px;
+    color: #666;
+}
+
+.emptyState p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.emptyState p:first-child {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+@media (max-width: 768px) {
+    .profilePage {
+        padding: 15px;
+    }
+
+    .postsGrid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .postImageContainer {
+        height: 200px;
+    }
+
+    .searchContainer {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .profilePage {
+        padding: 10px;
+    }
+
+    .postInfo {
+        padding: 15px;
+    }
+
+    .postTitle {
+        font-size: 16px;
+    }
+
+    .postContent {
+        font-size: 13px;
+    }
+}

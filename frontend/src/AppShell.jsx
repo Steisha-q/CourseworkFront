@@ -26,6 +26,7 @@ import {
   SearchPage,
   PreferencesPage,
   SearchCommunityPage,
+  NewPage,
 } from "./pages";
 import "./App.css";
 import { PostsPage } from "./pages/manager/PostsPage";
@@ -57,10 +58,7 @@ function App() {
                 path={ROUTES.createcommunity()}
                 element={<CreateCommunityPage />}
               />
-              <Route
-                path={ROUTES.posts()}
-                element={<h1> dfsfsfsd</h1>}
-              />
+              <Route path={ROUTES.posts()} element={<NewPage />} />
             </Route>
 
             <Route element={<Layouts.AuthLayout />}>
