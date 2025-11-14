@@ -1,0 +1,408 @@
+import React, { useState, useMemo } from 'react'
+import styles from "../MasterPostPage/styles.module.css";
+
+export const CreatePost = () => {
+  const [editingPost, setEditingPost] = useState(null);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [postToDelete, setPostToDelete] = useState(null);
+  const [newTag, setNewTag] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedTags, setSelectedTags] = useState([]);
+
+  const [postForm, setPostForm] = useState({
+    title: "",
+    community: "",
+    content: "",
+    image: null,
+    tags: [],
+    status: "regular",
+  });
+
+  const communities = [
+    { id: 1, name: "Woodworking Masters" },
+    { id: 2, name: "Ceramic Artists" },
+    { id: 3, name: "Metal Crafts" },
+    { id: 4, name: "Leather Workers" },
+  ];
+
+  const [posts, setPosts] = useState([
+    {
+      id: 1,
+      title: "New Woodworking Technique",
+      community: "Woodworking Masters",
+      content:
+        "Just discovered an amazing new technique for finishing wooden surfaces. It creates a beautiful matte finish that really brings out the natural grain of the wood.",
+      image: "/api/placeholder/400/200",
+      tags: ["woodworking", "technique", "finishing"],
+      status: "regular",
+      createdAt: "2024-01-15",
+    },
+    {
+      id: 2,
+      title: "Looking for Ceramic Glazing Expert",
+      community: "Ceramic Artists",
+      content:
+        "I need help with a complex glazing project. Looking for someone experienced with crystalline glazes for a special art piece.",
+      image: null,
+      tags: ["help", "glazing", "expert"],
+      status: "need_master",
+      createdAt: "2024-01-14",
+    },
+    {
+      id: 3,
+      title: "Metal Welding Workshop",
+      community: "Metal Crafts",
+      content:
+        "Organizing a welding workshop next weekend. All skill levels welcome! We will cover basic techniques and safety.",
+      image: "/api/placeholder/400/200",
+      tags: ["workshop", "welding", "metal"],
+      status: "regular",
+      createdAt: "2024-01-13",
+    },
+    {
+      id: 4,
+      title: "Need Help with Leather Tooling",
+      community: "Leather Workers",
+      content:
+        "Struggling with complex leather tooling patterns. Anyone experienced willing to help me learn advanced techniques?",
+      image: null,
+      tags: ["help", "leather", "tooling", "beginner"],
+      status: "need_master",
+      createdAt: "2024-01-12",
+    },
+  ]);
+
+  const allTags = useMemo(() => {
+    const tags = new Set();
+    posts.forEach((post) => {
+      post.tags.forEach((tag) => tags.add(tag));
+    });
+    return Array.from(tags).sort();
+  }, [posts]);
+
+  const filteredPosts = useMemo(() => {
+    return posts.filter((post) => {
+      const matchesSearch =
+        searchTerm === "" ||
+        post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        post.content.toLowerCase().includes(searchTerm.toLowerCase());
+
+      const matchesTags =
+        selectedTags.length === 0 ||
+        selectedTags.every((tag) => post.tags.includes(tag));
+
+      return matchesSearch && matchesTags;
+    });
+  }, [posts, searchTerm, selectedTags]);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setPostForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setPostForm((prev) => ({
+        ...prev,
+        image: URL.createObjectURL(file),
+      }));
+    }
+  };
+
+  const handleRemoveImage = () => {
+    setPostForm((prev) => ({
+      ...prev,
+      image: null,
+    }));
+  };
+
+  const handleAddTag = () => {
+    if (newTag.trim() && !postForm.tags.includes(newTag.trim())) {
+      setPostForm((prev) => ({
+        ...prev,
+        tags: [...prev.tags, newTag.trim()],
+      }));
+      setNewTag("");
+    }
+  };
+
+  const handleRemoveTag = (tagToRemove) => {
+    setPostForm((prev) => ({
+      ...prev,
+      tags: prev.tags.filter((tag) => tag !== tagToRemove),
+    }));
+  };
+
+  const handleTagKeyPress = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleAddTag();
+    }
+  };
+
+  const handleCreatePost = (e) => {
+    e.preventDefault();
+    const newPost = {
+      id: Date.now(),
+      ...postForm,
+      createdAt: new Date().toISOString().split("T")[0],
+    };
+
+    setPosts((prev) => [newPost, ...prev]);
+    resetForm();
+  };
+
+  const handleUpdatePost = (e) => {
+    e.preventDefault();
+    setPosts((prev) =>
+      prev.map((post) =>
+        post.id === editingPost.id ? { ...post, ...postForm } : post
+      )
+    );
+    setEditingPost(null);
+    resetForm();
+  };
+
+  const handleDeletePost = (postId) => {
+    setPosts((prev) => prev.filter((post) => post.id !== postId));
+    setShowDeleteModal(false);
+    setPostToDelete(null);
+  };
+
+  const handleEditPost = (post) => {
+    setEditingPost(post);
+    setPostForm({
+      title: post.title,
+      community: post.community,
+      content: post.content,
+      image: post.image,
+      tags: [...post.tags],
+      status: post.status,
+    });
+  };
+
+  const openDeleteModal = (post) => {
+    setPostToDelete(post);
+    setShowDeleteModal(true);
+  };
+
+  const cancelEdit = () => {
+    setEditingPost(null);
+    resetForm();
+  };
+
+  const resetForm = () => {
+    setPostForm({
+      title: "",
+      community: "",
+      content: "",
+      image: null,
+      tags: [],
+      status: "regular",
+    });
+    setNewTag("");
+  };
+
+  const handleTagFilter = (tag) => {
+    setSelectedTags((prev) =>
+      prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
+    );
+  };
+
+  const clearSearch = () => {
+    setSearchTerm("");
+    setSelectedTags([]);
+  };
+
+  return (
+    <div className={styles.postPage}>
+      <h1 className={styles.pageTitle}>Posts</h1>
+
+      <div className={styles.postContainer}>
+        <div className={styles.formSection}>
+          <h2 className={styles.formTitle}>
+            {editingPost ? "Edit Post" : "Create New Post"}
+          </h2>
+
+          <form
+            className={styles.form}
+            onSubmit={editingPost ? handleUpdatePost : handleCreatePost}
+          >
+            <div className={styles.formGroup}>
+              <label className={`${styles.label} ${styles.labelRequired}`}>
+                Post Title
+              </label>
+              <input
+                type="text"
+                name="title"
+                value={postForm.title}
+                onChange={handleInputChange}
+                className={styles.input}
+                placeholder="Enter post title"
+                required
+              />
+            </div>
+
+            <div className={styles.formGroup}>
+              <label className={`${styles.label} ${styles.labelRequired}`}>
+                Community
+              </label>
+              <select
+                name="community"
+                value={postForm.community}
+                onChange={handleInputChange}
+                className={styles.select}
+                required
+              >
+                <option value="">Select community</option>
+                {communities.map((community) => (
+                  <option key={community.id} value={community.name}>
+                    {community.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className={styles.formGroup}>
+              <label className={`${styles.label} ${styles.labelRequired}`}>
+                Content
+              </label>
+              <textarea
+                name="content"
+                value={postForm.content}
+                onChange={handleInputChange}
+                className={styles.textarea}
+                placeholder="Write your post content..."
+                required
+              />
+            </div>
+
+            <div className={styles.formGroup}>
+              <label className={styles.label}>Image</label>
+              {!postForm.image ? (
+                <div className={styles.imageUpload}>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageUpload}
+                  />
+                  <label className={styles.uploadLabel}>
+                    <span className={styles.uploadIcon}>📷</span>
+                    Click to upload image
+                  </label>
+                </div>
+              ) : (
+                <div className={styles.imagePreview}>
+                  <img
+                    src={postForm.image}
+                    alt="Preview"
+                    className={styles.previewImage}
+                  />
+                  <button
+                    type="button"
+                    className={styles.removeImage}
+                    onClick={handleRemoveImage}
+                  >
+                    Remove Image
+                  </button>
+                </div>
+              )}
+            </div>
+
+            <div className={styles.formGroup}>
+              <label className={styles.label}>Tags</label>
+              <div className={styles.tagsContainer}>
+                {postForm.tags.map((tag) => (
+                  <span key={tag} className={styles.tag}>
+                    {tag}
+                    <button
+                      type="button"
+                      className={styles.removeTag}
+                      onClick={() => handleRemoveTag(tag)}
+                    >
+                      ×
+                    </button>
+                  </span>
+                ))}
+              </div>
+              <div className={styles.tagInput}>
+                <input
+                  type="text"
+                  value={newTag}
+                  onChange={(e) => setNewTag(e.target.value)}
+                  onKeyPress={handleTagKeyPress}
+                  className={styles.input}
+                  placeholder="Add tag..."
+                />
+                <button
+                  type="button"
+                  className={styles.addTagBtn}
+                  onClick={handleAddTag}
+                  disabled={!newTag.trim()}
+                >
+                  Add Tag
+                </button>
+              </div>
+            </div>
+
+            <div className={styles.formGroup}>
+              <label className={`${styles.label} ${styles.labelRequired}`}>
+                Post Type
+              </label>
+              <div className={styles.statusOptions}>
+                <div className={styles.statusOption}>
+                  <input
+                    type="radio"
+                    name="status"
+                    value="regular"
+                    checked={postForm.status === "regular"}
+                    onChange={handleInputChange}
+                    className={styles.statusRadio}
+                    id="regular"
+                  />
+                  <label htmlFor="regular" className={styles.statusLabel}>
+                    Regular Post
+                  </label>
+                </div>
+                <div className={styles.statusOption}>
+                  <input
+                    type="radio"
+                    name="status"
+                    value="need_master"
+                    checked={postForm.status === "need_master"}
+                    onChange={handleInputChange}
+                    className={styles.statusRadio}
+                    id="need_master"
+                  />
+                  <label htmlFor="need_master" className={styles.statusLabel}>
+                    Need Master
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.formActions}>
+              <button type="submit" className={styles.submitBtn}>
+                {editingPost ? "Update Post" : "Create Post"}
+              </button>
+              {editingPost && (
+                <button
+                  type="button"
+                  className={styles.cancelBtn}
+                  onClick={cancelEdit}
+                >
+                  Cancel
+                </button>
+              )}
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  );
+};
