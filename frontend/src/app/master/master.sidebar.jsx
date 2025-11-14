@@ -1,6 +1,6 @@
 import React from "react";
 import { ROUTES } from "../constants";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./master.sidebar.css";
 
 import {
@@ -39,16 +39,19 @@ const MasterSidebar = () => {
             {menuItems.map((item, index) => {
               const IconComponent = item.icon;
               const isActive = isActiveRoute(item.route);
-
               return (
                 <li
                   key={index}
                   className={`sidebar-nav-item ${isActive ? "active" : ""}`}
                 >
-                  <a href={item.route} className="sidebar-nav-link">
+                  <Link
+                    to={item.route}
+                    key={index}
+                    className="sidebar-nav-link"
+                  >
                     <IconComponent className="sidebar-icon" />
                     <span>{item.label}</span>
-                  </a>
+                  </Link>
                 </li>
               );
             })}
